@@ -1,11 +1,9 @@
-import Image from "next/image";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
-    <main className="flex flex-col h-svh row-start-2 items-center sm:items-start">
-      <header>header</header>
-      <div className=""></div>
-      <footer className="mt-auto">footer</footer>
-    </main>
+    <div className="w-full">
+      <Hero />
+    </div>
   );
 }
