@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import FloatingLogos from "../floating-logo";
+import ComputersCanvas from "../canvas-3js/computer";
 
 export default function Hero() {
   return (
@@ -12,14 +12,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="text-left"
         >
           <h1 className="text-5xl font-bold mb-4 text-gray-800 dark:text-gray-100">
             Deemanth Poonacha
           </h1>
-          <h2 className="text-2xl mb-8 text-gray-600 dark:text-gray-300">
+          <h2 className="text-left text-2xl mb-8 text-gray-600 dark:text-gray-300">
             Full Stack Developer
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+          <p className="text-lg mb-8 max-w-2xl text-gray-600 dark:text-gray-300">
             Passionate about creating robust and scalable web applications.
             <br />
             Experienced in both front-end and back-end technologies.
@@ -34,6 +35,7 @@ export default function Hero() {
         </motion.div>
       </div>
       <FloatingLogos />
+      <ComputersCanvas />
     </section>
   );
 }
