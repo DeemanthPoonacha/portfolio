@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { technologies } from "@/lib/constants";
+import { technologies } from "@/data/data";
 
 type LogoProps = {
   Icon: any;

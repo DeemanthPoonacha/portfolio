@@ -11,15 +11,15 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
-  // const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  // if (!mounted) {
-  //   return null;
-  // }
+  if (!mounted) {
+    return null;
+  }
 
   const NavItems = () => (
     <>
