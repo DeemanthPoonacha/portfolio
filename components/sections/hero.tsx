@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import FloatingLogos from "./floating-logo";
-import ComputersCanvas from "./canvas/computer";
+import FloatingLogos from "../floating-logo";
+import ComputersCanvas from "../canvas/computer";
 
 export default function Hero() {
   return (
