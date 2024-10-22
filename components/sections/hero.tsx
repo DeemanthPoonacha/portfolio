@@ -21,6 +21,7 @@ export default function Hero() {
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
             Passionate about creating robust and scalable web applications.
+            <br />
             Experienced in both front-end and back-end technologies.
           </p>
 
