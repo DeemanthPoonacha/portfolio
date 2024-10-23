@@ -73,15 +73,14 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  @apply scroll-smooth snap-y  overflow-y-scroll h-screen;
 }
-
 .container {
   @apply px-4 mx-auto max-w-7xl;
 }
 
 section {
-  @apply py-16;
+  @apply py-16 snap-always snap-center;
 }
 
 h2 {

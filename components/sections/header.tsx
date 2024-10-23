@@ -8,10 +8,14 @@ import { TbMenu2, TbSun, TbMoon } from "react-icons/tb";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { useSection } from "@/lib/hooks/useSections";
+import { sections } from ".";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { currentSection } = useSection();
 
   useEffect(() => {
     setMounted(true);
@@ -23,30 +27,19 @@ export default function Header() {
 
   const NavItems = () => (
     <>
-      <Link
-        href="#about"
-        className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-      >
-        About
-      </Link>
-      <Link
-        href="#projects"
-        className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-      >
-        Projects
-      </Link>
-      <Link
-        href="#skills"
-        className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-      >
-        Skills
-      </Link>
-      <Link
-        href="#contact"
-        className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-      >
-        Contact
-      </Link>
+      {sections
+        .filter((sec, index) => index)
+        .map(({ id, title }) => (
+          <Link
+            href={`#${id}`}
+            className={cn(
+              "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors",
+              currentSection === id ? "text-primary dark:text-primary" : ""
+            )}
+          >
+            {title}
+          </Link>
+        ))}
     </>
   );
 

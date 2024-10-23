@@ -1,17 +1,12 @@
-import About from "@/components/sections/about";
-import Contact from "@/components/sections/contact";
-import Hero from "@/components/sections/hero";
-import Projects from "@/components/sections/projects";
-import Skills from "@/components/sections/skills";
+"use client";
+import { Section, sections } from "@/components/sections";
 
 export default function Home() {
   return (
     <div className="w-full">
-      <Hero />
-      <Projects />
-      <About />
-      <Skills />
-      <Contact />
+      {sections.map((section) => (
+        <Section {...section} />
+      ))}
     </div>
   );
 }

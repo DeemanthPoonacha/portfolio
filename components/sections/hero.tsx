@@ -6,7 +6,7 @@ import ComputersCanvas from "../canvas-3js/computer-scene";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col justify-center items-center h-screen lg:h-[70vh] relative py-20 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 overflow-hidden">
+    <>
       <div className="container px-4 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,6 +36,6 @@ export default function Hero() {
       </div>
       <FloatingLogos />
       <ComputersCanvas />
-    </section>
+    </>
   );
 }
