@@ -8,7 +8,7 @@ export default function About() {
         <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-gray-100">
           About Me
         </h2>
-        <div className="relative flex flex-col md:flex-row items-center gap-12 z-50">
+        <div className="relative flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/3 flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div>
