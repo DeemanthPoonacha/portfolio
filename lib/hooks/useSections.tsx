@@ -7,7 +7,7 @@ interface SectionContextType {
 }
 
 export const SectionContext = createContext<SectionContextType>({
-  currentSection: "",
+  currentSection: "hero",
   setCurrentSection: () => {},
 });
 

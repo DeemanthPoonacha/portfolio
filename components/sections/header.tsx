@@ -31,6 +31,7 @@ export default function Header() {
         .filter((sec, index) => index)
         .map(({ id, title }) => (
           <Link
+            key={id}
             href={`#${id}`}
             className={cn(
               "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors",

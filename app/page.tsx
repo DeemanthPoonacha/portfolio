@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {sections.map((section) => (
-        <Section {...section} />
+        <Section key={section.id} {...section} />
       ))}
     </div>
   );

@@ -35,7 +35,7 @@ export const Section = ({ id, content, title }: SectionProps) => {
   return (
     <section
       id={id}
-      className="flex flex-col justify-center items-center h-screen lg:h-[70vh] relative "
+      className="flex flex-col justify-center items-center h-screen relative "
       ref={ref}
     >
       {content}
