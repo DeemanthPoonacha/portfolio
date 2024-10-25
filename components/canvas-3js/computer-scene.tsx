@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload } from "@react-three/drei";
 import CanvasLoader from "./loader";
-import { Leva } from "leva";
 import Computer from "./computer";
 
 const ComputersCanvas = () => {
@@ -31,9 +30,7 @@ const ComputersCanvas = () => {
 
   return (
     <div className="fixed right-0 w-full h-full top-0.5">
-      <Leva />
       <Canvas
-        frameloop="demand"
         shadows
         dpr={[1, 2]}
         camera={{ position: [20, 3, 5], fov: 25 }}

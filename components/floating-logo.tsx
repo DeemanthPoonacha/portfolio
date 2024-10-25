@@ -103,7 +103,7 @@ const FloatingLogos = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute pointer-events-none w-full h-full top-0 left-0 overflow-hidden"
+      className="absolute pointer-events-none w-full h-full top-0 left-0 overflow-hidden -z-10"
     >
       {logos.length > 0 &&
         logos.map((logo) => (

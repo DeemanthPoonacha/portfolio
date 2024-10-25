@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import FloatingLogos from "../floating-logo";
-import ComputersCanvas from "../canvas-3js/computer-scene";
 
 export default function Hero() {
   return (
@@ -35,7 +34,6 @@ export default function Hero() {
         </motion.div>
       </div>
       <FloatingLogos />
-      <ComputersCanvas />
     </>
   );
 }
