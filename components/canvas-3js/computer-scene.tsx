@@ -3,6 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload } from "@react-three/drei";
 import CanvasLoader from "./loader";
 import Computer from "./computer";
+import RotatingSkills from "./RotatingSkills";
+import { useSection } from "@/lib/hooks/useSections";
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -27,6 +29,8 @@ const ComputersCanvas = () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
+  const { currentSection } = useSection();
+  const skillsActive = currentSection === "skills";
 
   return (
     <div className="fixed right-0 w-full h-full top-0.5">
@@ -42,6 +46,21 @@ const ComputersCanvas = () => {
             maxPolarAngle={Math.PI / 2}
             // minPolarAngle={Math.PI / 2}
           />
+
+          {/* <spotLight
+            position={[3, 3, 3]}
+            angle={0.15}
+            penumbra={10}
+            intensity={100}
+          /> */}
+          {/* <directionalLight
+            // rotation={[0, 0, 0]}
+            position={[5, 5, 5]}
+            intensity={1}
+          /> */}
+          <ambientLight intensity={6} color={"white"} />
+          {/* <hemisphereLight intensity={5} groundColor="gray" /> */}
+          <RotatingSkills isVisible={skillsActive} />
           <Computer isMobile={isMobile} />
         </Suspense>
 

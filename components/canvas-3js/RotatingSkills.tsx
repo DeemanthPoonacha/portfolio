@@ -36,7 +36,14 @@ const SkillCard = ({
   };
 
   return (
-    <group ref={cardRef}>
+    <group
+      ref={cardRef}
+      onPointerEnter={(e) => {
+        console.log("🚀 ~ e.object.scale:", e.object.scale);
+        return e.object.scale.set(1.1, 1.1, 1.1);
+      }}
+      onPointerLeave={(e) => e.object.scale.set(1, 1, 1)}
+    >
       <mesh rotation={[1.55, 1.5, 0]}>
         <cylinderGeometry args={[0.6, 0.6, 0.1]} />
         <meshStandardMaterial
@@ -65,6 +72,7 @@ const SkillCard = ({
           position: "relative",
           zIndex: calculateIsFlipped() ? 10000000 : -10000000,
           pointerEvents: "none",
+          color: "#fff",
         }}
       >
         <div style={{ fontSize: "2em" }}>
@@ -165,7 +173,6 @@ const RotatingSkills = ({ isVisible }: { isVisible: boolean }) => {
   return (
     <group ref={groupRef}>
       {skills.map((skill, index) => {
-        const initialPosition = [0, 0, 0];
         return (
           <group
             key={skill.id}
