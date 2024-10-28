@@ -37,12 +37,13 @@ const Computer = ({ isMobile = false }) => {
     });
   }, [currentSection]);
 
+  const skillsActive = currentSection === "skills";
   return (
     <mesh>
       <hemisphereLight intensity={15} groundColor="blue" />
       <pointLight intensity={1} position={[0.5, 0.15, -3.1]} color={"red"} />
+      <RotatingSkills isVisible={skillsActive} />
       <primitive ref={targetRef} object={computerObject.scene} />
-      <RotatingSkills isVisible={currentSection === "skills"} />
     </mesh>
   );
 };

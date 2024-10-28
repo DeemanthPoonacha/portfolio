@@ -1,38 +1,45 @@
-import { useRef, useState, useEffect } from "react";
-import { useGLTF, Html } from "@react-three/drei";
-import { useSection } from "@/lib/hooks/useSections";
+import { useRef, useState } from "react";
+import { Html } from "@react-three/drei";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { computerPositions } from "@/lib/constants";
-import { Object3D, Group, TextureLoader } from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { Group, Object3D, Object3DEventMap } from "three";
+import { useFrame } from "@react-three/fiber";
 import { skills } from "@/data/data";
-const SkillCard = ({ skill, position, rotation }) => {
-  const cardRef = useRef();
+import { TechnologyCard } from "@/lib/types";
+
+interface SkillCardProps {
+  skill: TechnologyCard;
+  index: number;
+  totalItems: number;
+  groupRotation: number;
+}
+
+const SkillCard = ({
+  skill,
+  index,
+  totalItems,
+  groupRotation,
+}: SkillCardProps) => {
+  const cardRef = useRef<Group>(null);
   const [hovered, setHovered] = useState(false);
 
-  // const colorMap = useLoader(TextureLoader, `/tech/${skill.id}.png`);
-  // Always face the camera
-  // useFrame(({ camera }) => {
-  //   if (cardRef.current) {
-  //     cardRef.current.rotateY(180);
-  //   }
-  // });
+  // Calculate if card should be flipped based on its position in the circle
+  const calculateIsFlipped = () => {
+    // Calculate the card's current angle in the circle
+    const cardAngle = (2 * Math.PI * index) / totalItems;
+    // Add the group's rotation to get the absolute angle
+    const absoluteAngle = cardAngle + groupRotation;
+    // Normalize the angle to 0-2π range
+    const normalizedAngle = (absoluteAngle % (2 * Math.PI)) + Math.PI / 2 + 0.5;
+    // Card should be flipped when it's in the back half of the circle
+    return normalizedAngle > Math.PI / 2 && normalizedAngle < (3 * Math.PI) / 2;
+  };
 
   return (
-    <group
-      // ref={cardRef}
-      // position={position}
-      // visible={isVisible}
-      position={position}
-      rotation={rotation}
-      onPointerEnter={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
-    >
+    <group ref={cardRef}>
       <mesh rotation={[1.55, 1.5, 0]}>
         <cylinderGeometry args={[0.6, 0.6, 0.1]} />
         <meshStandardMaterial
-          // map={colorMap}
           bumpScale={1.3}
           color={skill.color}
           metalness={1.2}
@@ -43,7 +50,7 @@ const SkillCard = ({ skill, position, rotation }) => {
       <Html
         transform
         distanceFactor={5}
-        position={[0, 0, 0.1]}
+        position={[0, 0, 0]}
         style={{
           width: "100px",
           height: "100px",
@@ -52,7 +59,11 @@ const SkillCard = ({ skill, position, rotation }) => {
           alignItems: "center",
           justifyContent: "center",
           transition: "transform 0.3s",
-          transform: hovered ? "scale(1.1)" : "scale(1)",
+          transform: `${hovered ? "scale(1.1)" : "scale(1)"} ${
+            calculateIsFlipped() ? "scaleX(1)" : "scaleX(-1)"
+          }`,
+          position: "relative",
+          zIndex: calculateIsFlipped() ? 10000000 : -10000000,
           pointerEvents: "none",
         }}
       >
@@ -75,16 +86,16 @@ const SkillCard = ({ skill, position, rotation }) => {
   );
 };
 
-const RotatingSkills = ({ isVisible }) => {
-  const groupRef = useRef();
-  const itemRefs = useRef([]);
+const RotatingSkills = ({ isVisible }: { isVisible: boolean }) => {
+  const groupRef = useRef<Group>(null);
+  const itemRefs = useRef<(Group | null)[]>([]);
   const radius = 5;
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [groupRotation, setGroupRotation] = useState(0);
 
-  useEffect(() => {
-    if (isVisible && !isAnimating) {
-      setIsAnimating(true);
+  useGSAP(() => {
+    if (isVisible) {
       itemRefs.current.forEach((item, index) => {
+        if (!item) return;
         const angle = (2 * Math.PI * index) / skills.length;
         const targetX = Math.sin(angle) * radius;
         const targetZ = Math.cos(angle) * radius;
@@ -98,8 +109,40 @@ const RotatingSkills = ({ isVisible }) => {
           },
           {
             x: targetX,
-            y: 1.5,
+            y: 0.8,
             z: targetZ,
+            duration: 1,
+            ease: "back.out(1.2)",
+            delay: index * 0.1,
+          }
+        );
+        gsap.fromTo(
+          item.rotation,
+          {
+            x: 0,
+            y: 0,
+            z: 0,
+          },
+          {
+            x: 0,
+            y: angle,
+            z: 0,
+            duration: 1,
+            ease: "back.out(1.2)",
+            delay: index * 0.1,
+          }
+        );
+        gsap.fromTo(
+          item.scale,
+          {
+            x: 0,
+            y: 0,
+            z: 0,
+          },
+          {
+            x: 1,
+            y: 1,
+            z: 1,
             duration: 1,
             ease: "back.out(1.2)",
             delay: index * 0.1,
@@ -111,25 +154,34 @@ const RotatingSkills = ({ isVisible }) => {
 
   useFrame(({ clock }) => {
     if (groupRef.current && isVisible) {
-      groupRef.current.rotation.y = clock.getElapsedTime() * 0.3;
+      const rotation = clock.getElapsedTime() * 0.3;
+      groupRef.current.rotation.y = rotation;
+      setGroupRotation(rotation);
     }
   });
-  if (!isVisible) return <></>;
+
+  if (!isVisible) return null;
 
   return (
     <group ref={groupRef}>
       {skills.map((skill, index) => {
-        const angle = (2 * Math.PI * index) / skills.length;
-        const x = Math.sin(angle) * radius;
-        const z = Math.cos(angle) * radius;
-        const y = 1; // Slightly above the computer
+        const initialPosition = [0, 0, 0];
         return (
-          <SkillCard
-            skill={skill}
-            key={index}
-            position={[x, y, z]}
-            rotation={[0, angle, 0]}
-          />
+          <group
+            key={skill.id}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
+            position={[0, 0, 0]}
+            scale={0}
+          >
+            <SkillCard
+              skill={skill}
+              index={index}
+              totalItems={skills.length}
+              groupRotation={groupRotation}
+            />
+          </group>
         );
       })}
     </group>

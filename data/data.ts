@@ -24,6 +24,7 @@ import {
   SiRapid,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
+import { TechnologyCard } from "../lib/types";
 
 export const projects = [
   {
@@ -42,7 +43,7 @@ export const projects = [
     image: "/projects/fit-buddy.jpg",
   },
 ];
-export const technologies = [
+export const technologies: TechnologyCard[] = [
   // Technologies
   { id: "reactjs", Icon: SiReact, name: "React", color: "#61DAFB" },
   { id: "nodejs", Icon: SiNodedotjs, name: "Node.js", color: "#339933" },
@@ -76,6 +77,7 @@ export const technologies = [
   },
   { id: "flask", Icon: SiFlask, name: "Flask", color: "#000000" },
   { id: "astro", Icon: SiAstro, name: "Astro", color: "#FF5D01" },
+  { id: "rapid", Icon: SiRapid, name: "Rapid Api", color: "#0091FF" },
 
   // Skills
   {
