@@ -29,8 +29,8 @@ export const computerPositions: Record<string, { big_768: Pose }> = {
   },
   skills: {
     big_768: {
-      position: { x: 0, y: 0, z: -0.6 },
-      rotation: { x: 0, y: -0.3, z: 0 },
+      position: { x: 0, y: 0, z: -0.7 },
+      rotation: { x: 0, y: -0.3, z: -0.1 },
       scale: 0.4,
     },
   },

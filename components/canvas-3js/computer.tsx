@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { computerPositions } from "@/lib/constants";
 import { Object3D } from "three";
+import RotatingSkills from "./RotatingSkills";
 
 const Computer = ({ isMobile = false }) => {
   const computerObject = useGLTF("./desktop_pc/scene.gltf");
@@ -41,6 +42,7 @@ const Computer = ({ isMobile = false }) => {
       <hemisphereLight intensity={15} groundColor="blue" />
       <pointLight intensity={1} position={[0.5, 0.15, -3.1]} color={"red"} />
       <primitive ref={targetRef} object={computerObject.scene} />
+      <RotatingSkills isVisible={currentSection === "skills"} />
     </mesh>
   );
 };

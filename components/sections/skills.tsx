@@ -16,7 +16,8 @@ export default function Skills() {
       <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-gray-100">
         Skills
       </h2>
-      <motion.div
+      <div className="min-h-[60vh]"></div>
+      {/* <motion.div
         ref={ref}
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : { opacity: 0 }}
@@ -30,7 +31,7 @@ export default function Skills() {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Card className="hover:shadow-md transition-all duration-300 transform hover:scale-105">
+            <Card className="hidden hover:shadow-md transition-all duration-300 transform hover:scale-105">
               <CardContent className="p-6 flex flex-col items-center justify-center">
                 {skill.Icon && (
                   <motion.div
@@ -47,7 +48,7 @@ export default function Skills() {
             </Card>
           </motion.div>
         ))}
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }
