@@ -12,20 +12,19 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { computerPositions } from "@/lib/constants";
 import { Object3D } from "three";
-import RotatingSkills from "./RotatingSkills";
 
 export function Computer(props: any) {
   const { nodes, materials } = useGLTF("/desktop_pc/scene.gltf");
   const { currentSection } = useSection();
   const targetRef = useRef<Object3D>(null);
   const textures: Record<string, string> = {
-    skills: "/desktop_pc/textures/custom/black.png",
-    contact: "/desktop_pc/textures/custom/black.png",
-    about: "/desktop_pc/textures/custom/black.png",
-    // projects: "/desktop_pc/textures/custom/bloggy.webm",
-    // hero: "/desktop_pc/textures/custom/black.png",
+    skills: "/custom-textures/black.png",
+    contact: "/custom-textures/black.png",
+    about: "/custom-textures/black.png",
+    // projects: "/custom-textures/bloggy.webm",
+    // hero: "/custom-textures/black.png",
   };
-  const video = useVideoTexture("/desktop_pc/textures/custom/bloggy.webm");
+  const video = useVideoTexture("/custom-textures/bloggy.webm");
   const texture = useTexture(
     textures[currentSection] ||
       "/desktop_pc/textures/Material.074_30_baseColor.png"

@@ -63,7 +63,7 @@ export const ThreeDCard = ({
         objectFit="cover"
         className="group-hover:scale-110 transition-transform duration-300"
       />
-      <h3 className="absolute text-2xl font-bold text-white p-4 z-10 ">
+      <h3 className="absolute text-2xl font-bold text-zinc-50 p-4 z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
         {project.title}
       </h3>
 

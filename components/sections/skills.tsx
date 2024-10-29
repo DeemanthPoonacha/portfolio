@@ -16,7 +16,7 @@ export default function Skills() {
       <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-gray-100">
         Skills
       </h2>
-      <div className="min-h-[60vh]"></div>
+      <div className="h-[60vh]"></div>
       {/* <motion.div
         ref={ref}
         initial={{ opacity: 0 }}

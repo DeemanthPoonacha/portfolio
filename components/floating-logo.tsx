@@ -78,8 +78,9 @@ const FloatingLogos = () => {
     const initializeLogos = () => {
       if (containerRef.current) {
         const container = containerRef.current.getBoundingClientRect();
-        const newLogos = technologies.map((tech) => ({
-          Icon: tech.Icon,
+        const newLogos = technologies.map(({ Icon, id }) => ({
+          id,
+          Icon,
           initialPosition: {
             x: Math.random() * (container.width - 40),
             y: Math.random() * (container.height - 40),
@@ -88,7 +89,6 @@ const FloatingLogos = () => {
             x: (Math.random() - 0.5) * 4,
             y: (Math.random() - 0.5) * 4,
           },
-          id: tech.id,
         }));
         setLogos(newLogos);
       }
