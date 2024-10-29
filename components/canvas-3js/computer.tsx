@@ -15,7 +15,7 @@ import { Object3D } from "three";
 
 export function Computer(props: any) {
   const { nodes, materials } = useGLTF("/desktop_pc/scene.gltf");
-  const { currentSection } = useSection();
+  const { currentSection, selectedProject } = useSection();
   const targetRef = useRef<Object3D>(null);
   const textures: Record<string, string> = {
     skills: "/custom-textures/black.png",
@@ -24,7 +24,16 @@ export function Computer(props: any) {
     // projects: "/custom-textures/bloggy.webm",
     // hero: "/custom-textures/black.png",
   };
-  const video = useVideoTexture("/custom-textures/bloggy.webm");
+  const video = useVideoTexture(
+    selectedProject
+      ? `/custom-textures/${selectedProject}.webm`
+      : `/custom-textures/bloggy.webm`
+  );
+  // const video = useVideoTexture();
+  console.log(
+    "🚀 ~ Computer ~ `/custom-textures/${selectedProject}.webm`:",
+    `/custom-textures/${selectedProject}.webm`
+  );
   const texture = useTexture(
     textures[currentSection] ||
       "/desktop_pc/textures/Material.074_30_baseColor.png"
@@ -66,7 +75,12 @@ export function Computer(props: any) {
       rotation={[-Math.PI / 2, 1.501, Math.PI / 2]}
       scale={[331.621, 348.065, 331.621]}
     >
-      <meshStandardMaterial
+      <directionalLight
+        // rotation={[0, 0, 0]}
+        position={[0, 0, 0]}
+        intensity={1}
+      />
+      <meshBasicMaterial
         color={"white"}
         map={currentSection === "projects" ? video : texture}
       />

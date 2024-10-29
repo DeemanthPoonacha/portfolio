@@ -53,11 +53,6 @@ const ComputersCanvas = () => {
             penumbra={10}
             intensity={100}
           /> */}
-          {/* <directionalLight
-            // rotation={[0, 0, 0]}
-            position={[5, 5, 5]}
-            intensity={1}
-          /> */}
           <ambientLight intensity={6} color={"white"} />
           {/* <hemisphereLight intensity={5} groundColor="gray" /> */}
           <RotatingSkills isVisible={skillsActive} />
