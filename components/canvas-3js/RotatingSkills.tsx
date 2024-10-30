@@ -94,81 +94,77 @@ const SkillCard = ({
   );
 };
 
-const RotatingSkills = ({ isVisible }: { isVisible: boolean }) => {
+const RotatingSkills = () => {
   const groupRef = useRef<Group>(null);
   const itemRefs = useRef<(Group | null)[]>([]);
   const radius = 5;
   const [groupRotation, setGroupRotation] = useState(0);
 
   useGSAP(() => {
-    if (isVisible) {
-      itemRefs.current.forEach((item, index) => {
-        if (!item) return;
-        const angle = (2 * Math.PI * index) / skills.length;
-        const targetX = Math.sin(angle) * radius;
-        const targetZ = Math.cos(angle) * radius;
+    itemRefs.current.forEach((item, index) => {
+      if (!item) return;
+      const angle = (2 * Math.PI * index) / skills.length;
+      const targetX = Math.sin(angle) * radius;
+      const targetZ = Math.cos(angle) * radius;
 
-        gsap.fromTo(
-          item.position,
-          {
-            x: 0,
-            y: 0,
-            z: 0,
-          },
-          {
-            x: targetX,
-            y: 0.8,
-            z: targetZ,
-            duration: 1,
-            ease: "back.out(1.2)",
-            delay: index * 0.1,
-          }
-        );
-        gsap.fromTo(
-          item.rotation,
-          {
-            x: 0,
-            y: 0,
-            z: 0,
-          },
-          {
-            x: 0,
-            y: angle,
-            z: 0,
-            duration: 1,
-            ease: "back.out(1.2)",
-            delay: index * 0.1,
-          }
-        );
-        gsap.fromTo(
-          item.scale,
-          {
-            x: 0,
-            y: 0,
-            z: 0,
-          },
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            duration: 1,
-            ease: "back.out(1.2)",
-            delay: index * 0.1,
-          }
-        );
-      });
-    }
-  }, [isVisible]);
+      gsap.fromTo(
+        item.position,
+        {
+          x: 0,
+          y: 0,
+          z: 0,
+        },
+        {
+          x: targetX,
+          y: 0.8,
+          z: targetZ,
+          duration: 1,
+          ease: "back.out(1.2)",
+          delay: index * 0.1,
+        }
+      );
+      gsap.fromTo(
+        item.rotation,
+        {
+          x: 0,
+          y: 0,
+          z: 0,
+        },
+        {
+          x: 0,
+          y: angle,
+          z: 0,
+          duration: 1,
+          ease: "back.out(1.2)",
+          delay: index * 0.1,
+        }
+      );
+      gsap.fromTo(
+        item.scale,
+        {
+          x: 0,
+          y: 0,
+          z: 0,
+        },
+        {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 1,
+          ease: "back.out(1.2)",
+          delay: index * 0.1,
+        }
+      );
+    });
+  }, []);
 
   useFrame(({ clock }) => {
-    if (groupRef.current && isVisible) {
+    if (groupRef.current) {
       const rotation = clock.getElapsedTime() * 0.3;
       groupRef.current.rotation.y = rotation;
       setGroupRotation(rotation);
     }
   });
-
-  if (!isVisible) return null;
 
   return (
     <group ref={groupRef}>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
 import gsap from "gsap";
@@ -7,43 +7,50 @@ import { computerPositions } from "@/lib/constants";
 import { Object3D } from "three";
 import { Screen } from "./Screen";
 
-export function Computer(props: any) {
+// Optimized Computer component
+const Computer = ({ isMobile }: { isMobile: boolean }) => {
   const { nodes, materials } = useGLTF("/desktop_pc/scene.gltf");
   const { currentSection } = useSection();
-  const targetRef = useRef<Object3D>(null);
+  const computerRef = useRef<Object3D>(null);
 
-  useGSAP(() => {
-    if (!targetRef.current) return;
+  const updateComputerPosition = useCallback(() => {
+    if (!computerRef.current) return;
 
-    const animConfigs = {
+    const config = computerPositions[currentSection]["big_768"];
+    // computerPositions[currentSection][isMobile ? "small" : "big_768"];
+    const { position, rotation, scale } = config;
+
+    gsap.to(computerRef.current.position, {
+      x: position.x,
+      y: position.y,
+      z: position.z,
       duration: 1.5,
       ease: "power3.out",
-    };
-    const { position, rotation, scale } =
-      computerPositions[currentSection].big_768;
-    gsap.to(targetRef.current.position, {
-      ...position,
-      ...animConfigs,
     });
-    gsap.to(targetRef.current.rotation, {
-      ...rotation,
-      ...animConfigs,
+
+    gsap.to(computerRef.current.rotation, {
+      x: rotation.x,
+      y: rotation.y,
+      z: rotation.z,
+      duration: 1.5,
+      ease: "power3.out",
     });
-    gsap.to(targetRef.current.scale, {
+
+    gsap.to(computerRef.current.scale, {
       x: scale,
       y: scale,
       z: scale,
-      ...animConfigs,
+      duration: 1.5,
+      ease: "power3.out",
     });
-  }, [currentSection]);
+  }, [currentSection, isMobile]);
+
+  useEffect(() => {
+    updateComputerPosition();
+  }, [updateComputerPosition]);
 
   return (
-    <group ref={targetRef} {...props} dispose={null}>
-      <OrbitControls
-        enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        // minPolarAngle={Math.PI / 2}
-      />
+    <group ref={computerRef} dispose={null}>
       <group scale={0.01}>
         <mesh
           castShadow
@@ -6238,7 +6245,7 @@ export function Computer(props: any) {
       </group>
     </group>
   );
-}
+};
 
 useGLTF.preload("/desktop_pc/scene.gltf");
 export default Computer;
