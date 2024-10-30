@@ -1,39 +1,63 @@
-import React, {
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from "react";
-import { Canvas, useThree } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Preload,
-  useHelper,
-  useProgress,
-} from "@react-three/drei";
-import { DirectionalLight, HemisphereLightHelper, Vector3 } from "three";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Preload } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
-import { computerPositions } from "@/lib/constants";
-import Computer from "./computer";
-import RotatingSkills from "./RotatingSkills";
+import gsap from "gsap";
+import * as THREE from "three";
 import CanvasLoader from "./loader";
+import Computer from "./computer";
+import CameraController from "./CameraController";
 
-// Optimized lighting component with proper typing
+// Main Scene component
+const Scene = () => {
+  return (
+    <>
+      <CameraController />
+      <Computer />
+      <Lighting />
+
+      {/* <gridHelper args={[30, 30, 0xff0000, "teal"]} />
+      <axesHelper args={[5]} /> */}
+    </>
+  );
+};
+
+// Lighting component with dynamic intensity based on section
 const Lighting = () => {
-  const lightRef = useRef<DirectionalLight>(null);
-  const { scene } = useThree();
+  const { currentSection } = useSection();
+  const lightRef = useRef<THREE.DirectionalLight>(null);
 
   useEffect(() => {
-    if (scene && lightRef.current) {
-      scene.traverse((object) => {
-        if (object.isMesh) {
-          object.castShadow = true;
-          object.receiveShadow = true;
-        }
+    if (!lightRef.current) return;
+
+    // Adjust lighting based on section
+    const lightingConfigs: Record<
+      string,
+      { intensity: number; position: number[] }
+    > = {
+      home: { intensity: 1, position: [5, 5, 5] },
+      about: { intensity: 1.2, position: [3, 3, 3] },
+      skills: { intensity: 10, position: [-3, 4, 5] },
+      projects: { intensity: 0.8, position: [0, 5, -5] },
+      contact: { intensity: 1.3, position: [5, 2, 3] },
+    };
+
+    const config = lightingConfigs[currentSection];
+    if (config) {
+      gsap.to(lightRef.current, {
+        intensity: config.intensity,
+        duration: 2,
+        ease: "power3.out",
+      });
+      gsap.to(lightRef.current.position, {
+        x: config.position[0],
+        y: config.position[1],
+        z: config.position[2],
+        duration: 2,
+        ease: "power3.out",
       });
     }
-  }, [scene]);
+  }, [currentSection]);
 
   return (
     <>
@@ -44,28 +68,7 @@ const Lighting = () => {
         castShadow
         shadow-mapSize={[1024, 1024]}
       />
-      <ambientLight intensity={0.5} />
-      <hemisphereLight intensity={0.3} groundColor="blue" />
-    </>
-  );
-};
-
-// Main scene component
-const Scene = ({ isMobile }: { isMobile: boolean }) => {
-  const { currentSection } = useSection();
-
-  return (
-    <>
-      <Computer isMobile={isMobile} />
-      {currentSection === "skills" && <RotatingSkills />}
-      <Lighting />
-      <OrbitControls
-        enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 4}
-        dampingFactor={0.05}
-        enableDamping
-      />
+      <ambientLight intensity={2} />
     </>
   );
 };
@@ -88,27 +91,26 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    <div className="fixed right-0 w-full h-full top-0.5 z-50">
+    <div className="fixed right-0 w-full h-full top-0.5 z-0">
       <Canvas
         shadows
         dpr={[1, 2]}
-        camera={{
-          position: [20, 3, 5],
-          fov: 25,
-          near: 0.1,
-          far: 1000,
-        }}
         gl={{
           preserveDrawingBuffer: true,
           antialias: true,
           alpha: true,
         }}
-        performance={{ min: 0.5 }}
+        camera={{
+          fov: 25,
+          near: 0.1,
+          far: 1000,
+          position: [20, 3, 5],
+        }}
       >
         <Suspense fallback={<CanvasLoader />}>
-          <Scene isMobile={isMobile} />
+          <Scene />
         </Suspense>
-        {/* <Preload all /> */}
+        <Preload all />
       </Canvas>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useSection } from "@/lib/hooks/useSections";
 import { useVideoTexture, useTexture } from "@react-three/drei";
+import RotatingSkills from "./RotatingSkills";
 
 export const Screen = () => {
   const { currentSection, selectedProject } = useSection();
@@ -22,9 +23,14 @@ export const Screen = () => {
   );
   video.colorSpace = "srgb";
 
-  return currentSection === "projects" ? (
-    <meshLambertMaterial map={video} />
-  ) : (
-    <meshBasicMaterial map={texture} />
+  return (
+    <>
+      {currentSection === "skills" && <RotatingSkills />}
+      {currentSection === "projects" ? (
+        <meshLambertMaterial map={video} />
+      ) : (
+        <meshBasicMaterial map={texture} />
+      )}
+    </>
   );
 };

@@ -6,51 +6,20 @@ import { useGSAP } from "@gsap/react";
 import { computerPositions } from "@/lib/constants";
 import { Object3D } from "three";
 import { Screen } from "./Screen";
+import RotatingSkills from "./RotatingSkills";
 
 // Optimized Computer component
-const Computer = ({ isMobile }: { isMobile: boolean }) => {
+const Computer = () => {
   const { nodes, materials } = useGLTF("/desktop_pc/scene.gltf");
   const { currentSection } = useSection();
-  const computerRef = useRef<Object3D>(null);
-
-  const updateComputerPosition = useCallback(() => {
-    if (!computerRef.current) return;
-
-    const config = computerPositions[currentSection]["big_768"];
-    // computerPositions[currentSection][isMobile ? "small" : "big_768"];
-    const { position, rotation, scale } = config;
-
-    gsap.to(computerRef.current.position, {
-      x: position.x,
-      y: position.y,
-      z: position.z,
-      duration: 1.5,
-      ease: "power3.out",
-    });
-
-    gsap.to(computerRef.current.rotation, {
-      x: rotation.x,
-      y: rotation.y,
-      z: rotation.z,
-      duration: 1.5,
-      ease: "power3.out",
-    });
-
-    gsap.to(computerRef.current.scale, {
-      x: scale,
-      y: scale,
-      z: scale,
-      duration: 1.5,
-      ease: "power3.out",
-    });
-  }, [currentSection, isMobile]);
-
-  useEffect(() => {
-    updateComputerPosition();
-  }, [updateComputerPosition]);
 
   return (
-    <group ref={computerRef} dispose={null}>
+    <group
+      position={[0, -1.0, -3.3]}
+      rotation={[0, -0.7, 0.0]}
+      scale={0.4}
+      dispose={null}
+    >
       <group scale={0.01}>
         <mesh
           castShadow

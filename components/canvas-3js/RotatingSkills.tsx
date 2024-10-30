@@ -30,13 +30,14 @@ const SkillCard = ({
     // Add the group's rotation to get the absolute angle
     const absoluteAngle = cardAngle + groupRotation;
     // Normalize the angle to 0-2π range
-    const normalizedAngle = (absoluteAngle % (2 * Math.PI)) + Math.PI / 2 + 0.5;
+    const normalizedAngle = (absoluteAngle % (2 * Math.PI)) + Math.PI / 2 ;
     // Card should be flipped when it's in the back half of the circle
     return normalizedAngle > Math.PI / 2 && normalizedAngle < (3 * Math.PI) / 2;
   };
 
   return (
     <group
+      scale={0.6}
       ref={cardRef}
       onPointerEnter={(e) => {
         console.log("🚀 ~ e.object.scale:", e.object.scale);
@@ -97,13 +98,13 @@ const SkillCard = ({
 const RotatingSkills = () => {
   const groupRef = useRef<Group>(null);
   const itemRefs = useRef<(Group | null)[]>([]);
-  const radius = 5;
+  const radius = 2.6;
   const [groupRotation, setGroupRotation] = useState(0);
 
   useGSAP(() => {
     itemRefs.current.forEach((item, index) => {
       if (!item) return;
-      const angle = (2 * Math.PI * index) / skills.length;
+      const angle = (2 * Math.PI * index) / skills.length - Math.PI / 2;
       const targetX = Math.sin(angle) * radius;
       const targetZ = Math.cos(angle) * radius;
 
@@ -167,7 +168,7 @@ const RotatingSkills = () => {
   });
 
   return (
-    <group ref={groupRef}>
+    <group scale={0.6} position={[0, -0.8, 0]} ref={groupRef}>
       {skills.map((skill, index) => {
         return (
           <group
