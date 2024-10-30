@@ -28,7 +28,7 @@ export default function Header() {
   const NavItems = () => (
     <>
       {sections
-        .filter((sec, index) => index)
+        .filter((_sec, index) => index)
         .map(({ id, title }) => (
           <Link
             key={id}

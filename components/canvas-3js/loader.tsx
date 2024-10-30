@@ -15,9 +15,9 @@ const CanvasLoader = () => {
     >
       <span className="canvas-loader"></span>
       <p
+        className="text-zinc-900 dark:text-zinc-100"
         style={{
           fontSize: 14,
-          color: "#F1F1F1",
           fontWeight: 800,
           marginTop: 40,
         }}
