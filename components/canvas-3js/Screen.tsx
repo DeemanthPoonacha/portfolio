@@ -5,7 +5,7 @@ import RotatingSkills from "./RotatingSkills";
 export const Screen = () => {
   const { currentSection, selectedProject } = useSection();
   const textures: Record<string, string> = {
-    skills: "/custom-textures/black.png",
+    skills: "/custom-textures/skills.webp",
     contact: "/custom-textures/black.png",
     about: "/custom-textures/black.png",
     // projects: "/custom-textures/bloggy.webm",

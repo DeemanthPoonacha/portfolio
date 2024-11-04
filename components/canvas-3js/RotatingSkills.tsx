@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Html } from "@react-three/drei";
+import { Html, useTexture } from "@react-three/drei";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Group, Object3D, Object3DEventMap } from "three";
@@ -21,41 +21,43 @@ const SkillCard = ({
   groupRotation,
 }: SkillCardProps) => {
   const cardRef = useRef<Group>(null);
-  const [hovered, setHovered] = useState(false);
-
+  const texture = useTexture(`/tech/${skill.id}.png`);
   // Calculate if card should be flipped based on its position in the circle
-  const calculateIsFlipped = () => {
+  const isFlipped = () => {
     // Calculate the card's current angle in the circle
     const cardAngle = (2 * Math.PI * index) / totalItems;
     // Add the group's rotation to get the absolute angle
     const absoluteAngle = cardAngle + groupRotation;
     // Normalize the angle to 0-2π range
-    const normalizedAngle = (absoluteAngle % (2 * Math.PI)) + Math.PI / 2 ;
+    const normalizedAngle = (absoluteAngle % (2 * Math.PI)) + Math.PI / 2;
     // Card should be flipped when it's in the back half of the circle
     return normalizedAngle > Math.PI / 2 && normalizedAngle < (3 * Math.PI) / 2;
   };
 
   return (
     <group
-      scale={0.6}
+      scale={[
+        0.6 * (isFlipped() ? 1 : -1),
+        0.6 * (isFlipped() ? 1 : -1),
+        0.6,
+      ]}
       ref={cardRef}
-      onPointerEnter={(e) => {
-        console.log("🚀 ~ e.object.scale:", e.object.scale);
-        return e.object.scale.set(1.1, 1.1, 1.1);
-      }}
-      onPointerLeave={(e) => e.object.scale.set(1, 1, 1)}
     >
       <mesh rotation={[1.55, 1.5, 0]}>
         <cylinderGeometry args={[0.6, 0.6, 0.1]} />
         <meshStandardMaterial
-          bumpScale={1.3}
-          color={skill.color}
-          metalness={1.2}
-          roughness={0.8}
-          opacity={0.9}
+          // bumpScale={1.3}
+          // color={skill.color}
+          // emissive={skill.color}
+          // color={"#ffffff"}
+          emissive={"#000"}
+          metalness={0.2}
+          roughness={0.3}
+          opacity={1}
+          map={texture}
         />
       </mesh>
-      <Html
+      {/* <Html
         transform
         distanceFactor={5}
         position={[0, 0, 0]}
@@ -67,16 +69,13 @@ const SkillCard = ({
           alignItems: "center",
           justifyContent: "center",
           transition: "transform 0.3s",
-          transform: `${hovered ? "scale(1.1)" : "scale(1)"} ${
-            calculateIsFlipped() ? "scaleX(1)" : "scaleX(-1)"
-          }`,
+          transform: `${calculateIsFlipped() ? "scaleX(1)" : "scaleX(-1)"}`,
           position: "relative",
-          zIndex: calculateIsFlipped() ? 10000000 : -10000000,
-          pointerEvents: "none",
-          color: "#fff",
         }}
+        className="hover:scale-110"
       >
         <div style={{ fontSize: "2em" }}>
+          {" "}
           <skill.Icon />
         </div>
         <div
@@ -88,9 +87,10 @@ const SkillCard = ({
             color: "#fff",
           }}
         >
+          {" "}
           {skill.name}
         </div>
-      </Html>
+      </Html> */}
     </group>
   );
 };
@@ -110,11 +110,7 @@ const RotatingSkills = () => {
 
       gsap.fromTo(
         item.position,
-        {
-          x: 0,
-          y: 0,
-          z: 0,
-        },
+        { x: 0, y: 0, z: 0 },
         {
           x: targetX,
           y: 0.8,
@@ -126,11 +122,7 @@ const RotatingSkills = () => {
       );
       gsap.fromTo(
         item.rotation,
-        {
-          x: 0,
-          y: 0,
-          z: 0,
-        },
+        { x: 0, y: 0, z: 0 },
         {
           x: 0,
           y: angle,
@@ -142,11 +134,7 @@ const RotatingSkills = () => {
       );
       gsap.fromTo(
         item.scale,
-        {
-          x: 0,
-          y: 0,
-          z: 0,
-        },
+        { x: 0, y: 0, z: 0 },
         {
           x: 1,
           y: 1,
@@ -179,12 +167,13 @@ const RotatingSkills = () => {
             position={[0, 0, 0]}
             scale={0}
           >
+            {" "}
             <SkillCard
               skill={skill}
               index={index}
               totalItems={skills.length}
               groupRotation={groupRotation}
-            />
+            />{" "}
           </group>
         );
       })}

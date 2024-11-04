@@ -53,7 +53,7 @@ const CameraController = () => {
         duration,
         ease,
         onUpdate: () => {
-          controlsRef.current.update();
+          controlsRef.current?.update();
         },
       });
     },
