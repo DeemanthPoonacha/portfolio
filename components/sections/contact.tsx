@@ -25,9 +25,7 @@ export default function Contact() {
 
   return (
     <div className="container mx-auto px-4">
-      <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-gray-100">
-        Contact Me
-      </h2>
+      <h2 className="section-header">Contact Me</h2>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

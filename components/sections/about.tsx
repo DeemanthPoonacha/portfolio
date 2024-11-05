@@ -4,9 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function About() {
   return (
     <div className="container mx-auto px-4">
-      <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-gray-100">
-        About Me
-      </h2>
+      <h2 className="section-header">About Me</h2>
       <div className="relative flex flex-col md:flex-row items-center gap-12">
         <div className="md:w-1/3 flex justify-center">
           <div className="relative">

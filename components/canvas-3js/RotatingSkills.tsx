@@ -36,11 +36,7 @@ const SkillCard = ({
 
   return (
     <group
-      scale={[
-        0.6 * (isFlipped() ? 1 : -1),
-        0.6 * (isFlipped() ? 1 : -1),
-        0.6,
-      ]}
+      scale={[0.6 * (isFlipped() ? 1 : -1), 0.6 * (isFlipped() ? 1 : -1), 0.6]}
       ref={cardRef}
     >
       <mesh rotation={[1.55, 1.5, 0]}>
@@ -50,9 +46,10 @@ const SkillCard = ({
           // color={skill.color}
           // emissive={skill.color}
           // color={"#ffffff"}
-          emissive={"#000"}
+          // emissive={"#ffffff"}
+          // emissive={"#000"}
           metalness={0.2}
-          roughness={0.3}
+          roughness={13}
           opacity={1}
           map={texture}
         />

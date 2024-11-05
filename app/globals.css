@@ -87,6 +87,14 @@ h2 {
   @apply text-3xl font-bold mb-8 text-center;
 }
 
+.section-header {
+  @apply text-4xl font-bold mb-12 mx-auto gradient-text w-fit;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 w-fit;
+}
+
 .accent-bg {
   background: linear-gradient(
     135deg,

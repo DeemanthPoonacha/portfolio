@@ -29,6 +29,7 @@ import {
   SiHtml5,
   SiCss3,
   SiFastapi,
+  SiFramer,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { TechnologyCard } from "../lib/types";
@@ -85,6 +86,12 @@ export const technologies: TechnologyCard[] = [
   { id: "nextjs", Icon: SiNextdotjs, name: "Next.js", color: "#000000" },
   { id: "astro", Icon: SiAstro, name: "Astro", color: "#FF5D01" },
   { id: "threejs", Icon: SiThreedotjs, name: "Three.js", color: "#000000" },
+  {
+    id: "framermotion",
+    Icon: SiFramer,
+    name: "Framer Motion",
+    color: "#000000",
+  },
   { id: "redux", Icon: SiRedux, name: "Redux", color: "#764ABC" },
   { id: "chartjs", Icon: SiChartdotjs, name: "Chart.js", color: "#FF6384" },
   {
