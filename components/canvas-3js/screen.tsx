@@ -1,6 +1,6 @@
 import { useSection } from "@/lib/hooks/useSections";
 import { useVideoTexture, useTexture } from "@react-three/drei";
-import RotatingSkills from "./RotatingSkills";
+import RotatingSkills from "./rotating-skills";
 
 export const Screen = () => {
   const { currentSection, selectedProject } = useSection();

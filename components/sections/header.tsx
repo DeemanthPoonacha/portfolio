@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useSection } from "@/lib/hooks/useSections";
 import { sections } from ".";
+import Image from "next/image";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -52,8 +53,17 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-primary">
-          Deemanth Poonacha
+        <Link href="/" className="text-2xl font-bold gradient-text">
+          <Image
+            src={
+              theme === "dark"
+                ? "/logos/logo_dark.png"
+                : "/logos/logo_light.png"
+            }
+            alt="Logo"
+            width={264 * 0.25}
+            height={192 * 0.25}
+          />
         </Link>
         <div className="hidden md:flex items-center space-x-6">
           <NavItems />

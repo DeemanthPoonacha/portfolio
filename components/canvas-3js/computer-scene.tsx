@@ -6,7 +6,7 @@ import gsap from "gsap";
 import * as THREE from "three";
 import CanvasLoader from "./loader";
 import Computer from "./computer";
-import CameraController from "./CameraController";
+import CameraController from "./camera-controller";
 
 // Main Scene component
 const Scene = () => {

@@ -5,8 +5,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { computerPositions } from "@/lib/constants";
 import { Object3D } from "three";
-import { Screen } from "./Screen";
-import RotatingSkills from "./RotatingSkills";
+import { Screen } from "./screen";
+import RotatingSkills from "./rotating-skills";
 
 // Optimized Computer component
 const Computer = () => {
