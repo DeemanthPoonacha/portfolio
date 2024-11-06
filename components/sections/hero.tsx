@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import FloatingLogos from "../floating-logo";
 import Link from "next/link";
+import Button from "../ui/outline-button";
 
 export default function Hero() {
   const fadeInUpVariants = {
@@ -49,17 +50,9 @@ export default function Hero() {
           </motion.p>
 
           <Link href="#contact" className="rounded-full">
-            <motion.button
-              variants={fadeInUpVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 shadow-2xl"
-            >
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#2563EB_0%,#9333EA_50%,#2563EB_100%)]" />
-              <span className="mb-1 inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl transition-colors duration-200 group-hover:bg-slate-900/30">
-                Contact Me
-              </span>
-            </motion.button>
+            <Button className="rounded-full" spanClassName="rounded-full">
+              Contact Me
+            </Button>
           </Link>
         </motion.div>
       </div>

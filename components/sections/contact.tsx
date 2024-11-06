@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import Button from "../ui/outline-button";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -73,10 +73,7 @@ export default function Contact() {
                   className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
                 />
               </div>
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90"
-              >
+              <Button type="submit" className="w-full">
                 Send Message
               </Button>
             </form>
