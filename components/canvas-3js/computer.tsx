@@ -1,12 +1,6 @@
-import { useCallback, useEffect, useRef } from "react";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { computerPositions } from "@/lib/constants";
-import { Object3D } from "three";
 import { Screen } from "./screen";
-import RotatingSkills from "./rotating-skills";
 
 // Optimized Computer component
 const Computer = () => {

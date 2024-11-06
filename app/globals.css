@@ -90,9 +90,11 @@ h2 {
 .section-header {
   @apply text-4xl font-bold mb-12 mx-auto gradient-text w-fit;
 }
-
+.gradient-bg {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400;
+}
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 w-fit;
+  @apply bg-clip-text text-transparent gradient-bg w-fit;
 }
 
 .accent-bg {
@@ -141,4 +143,16 @@ h2 {
 
 .float-animation {
   animation: float 4s ease-in-out infinite;
+}
+
+.glass-card {
+  background: transparent !important;
+  background-image: linear-gradient(120deg, #60a5fae0, #9333ea60) !important;
+  backdrop-filter: blur(16px);
+}
+
+.glass-card:is(.dark *) {
+  background: transparent !important;
+  background-image: linear-gradient(120deg, #60a5fa30, #c084fc30) !important;
+  backdrop-filter: blur(16px);
 }

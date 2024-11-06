@@ -7,7 +7,7 @@ export const Screen = () => {
   const textures: Record<string, string> = {
     skills: "/custom-textures/skills.webp",
     contact: "/custom-textures/black.png",
-    about: "/custom-textures/black.png",
+    about: "/custom-textures/profile.jpg",
     // projects: "/custom-textures/bloggy.webm",
     // hero: "/custom-textures/black.png",
   };
