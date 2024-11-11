@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { cameraPositions } from "@/lib/constants";
 import { button, folder, useControls } from "leva";
 import { PerspectiveCamera } from "three";
+import { OrbitControls as OrbitControlsType } from "three-stdlib";
 
 const CameraController = () => {
   const { camera } = useThree();
@@ -81,10 +82,10 @@ const CameraController = () => {
 };
 
 // Camera controller component with simplified Leva controls
-const LevaCameraController = () => {
+export const LevaCameraController = () => {
   const { camera } = useThree();
   const { currentSection } = useSection();
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<OrbitControlsType>(null);
 
   // Create simple Leva controls that update based on current section
   const [{ position, target, fov }, set] = useControls(() => ({
@@ -111,9 +112,9 @@ const LevaCameraController = () => {
             z: Number(camera.position.z.toFixed(2)),
           },
           target: {
-            x: Number(controlsRef.current.target.x.toFixed(2)),
-            y: Number(controlsRef.current.target.y.toFixed(2)),
-            z: Number(controlsRef.current.target.z.toFixed(2)),
+            x: Number(controlsRef.current?.target.x.toFixed(2)),
+            y: Number(controlsRef.current?.target.y.toFixed(2)),
+            z: Number(controlsRef.current?.target.z.toFixed(2)),
           },
           fov: Number((camera as PerspectiveCamera).fov.toFixed(2)),
         };

@@ -75,20 +75,17 @@ const Lighting = () => {
 
 // Main canvas component
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-    setIsMobile(mediaQuery.matches);
-
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
-    return () =>
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-  }, []);
+  // const [isMobile, setIsMobile] = useState(false);
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia("(max-width: 500px)");
+  //   setIsMobile(mediaQuery.matches);
+  //   const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+  //     setIsMobile(event.matches);
+  //   };
+  //   mediaQuery.addEventListener("change", handleMediaQueryChange);
+  //   return () =>
+  //     mediaQuery.removeEventListener("change", handleMediaQueryChange);
+  // }, []);
 
   return (
     <div className="fixed right-0 w-full h-full top-0.5 z-0">
