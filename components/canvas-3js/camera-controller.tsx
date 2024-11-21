@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
@@ -7,6 +7,7 @@ import { cameraPositions } from "@/lib/constants";
 import { button, folder, useControls } from "leva";
 import { PerspectiveCamera } from "three";
 import { OrbitControls as OrbitControlsType } from "three-stdlib";
+import useScreenSize from "@/lib/hooks/useScreenSize";
 
 const CameraController = () => {
   const { camera } = useThree();
@@ -15,7 +16,9 @@ const CameraController = () => {
 
   // Function to animate camera movement
   const animateCamera = useCallback(
-    (targetConfig: (typeof cameraPositions)[keyof typeof cameraPositions]) => {
+    (
+      targetConfig: (typeof cameraPositions)["sm"][keyof (typeof cameraPositions)["sm"]]
+    ) => {
       if (!camera || !controlsRef.current) return;
 
       const duration = 1.5;
@@ -61,20 +64,21 @@ const CameraController = () => {
     [camera]
   );
 
+  const { screenSize } = useScreenSize();
   // React to section changes
   useEffect(() => {
-    const targetConfig = cameraPositions[currentSection];
+    const targetConfig = cameraPositions[screenSize][currentSection];
     if (targetConfig) {
       animateCamera(targetConfig);
     }
-  }, [currentSection, animateCamera]);
+  }, [currentSection, animateCamera, screenSize]);
 
   return (
     <OrbitControls
       ref={controlsRef}
       enableZoom={false}
       enablePan={false}
-      enableRotate={false}
+      // enableRotate={false}
       maxPolarAngle={Math.PI / 2}
       minPolarAngle={Math.PI / 4}
     />
@@ -86,6 +90,7 @@ export const LevaCameraController = () => {
   const { camera } = useThree();
   const { currentSection } = useSection();
   const controlsRef = useRef<OrbitControlsType>(null);
+  const { screenSize } = useScreenSize();
 
   // Create simple Leva controls that update based on current section
   const [{ position, target, fov }, set] = useControls(() => ({
@@ -142,7 +147,7 @@ export const LevaCameraController = () => {
   // Update controls when section changes
   useEffect(() => {
     // Get initial values for the section from your cameraPositions object
-    const sectionConfig = cameraPositions[currentSection];
+    const sectionConfig = cameraPositions[screenSize][currentSection];
     if (sectionConfig) {
       set({
         position: sectionConfig.position,

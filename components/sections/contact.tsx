@@ -46,7 +46,7 @@ const ANIMATION_VARIANTS = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delay: 1 },
+      transition: { staggerChildren: 0.1, delay: 1.3 },
     },
   },
   item: {
@@ -202,7 +202,7 @@ export default function Contact() {
       >
         <motion.div
           variants={ANIMATION_VARIANTS.item}
-          className="flex gap-4 mt-16"
+          className="flex lg:gap-4 mt-16"
         >
           {SOCIAL_LINKS.map((link, index) => (
             <motion.a
@@ -217,7 +217,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
             >
               <link.icon className="w-6 h-6" />
-              <span className="text-lg">{link.label}</span>
+              <span className="text-lg hidden lg:block">{link.label}</span>
             </motion.a>
           ))}
         </motion.div>

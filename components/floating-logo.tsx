@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { technologies } from "@/data/data";
+import useScreenSize from "@/lib/hooks/useScreenSize";
 
 type LogoProps = {
   Icon: any;
@@ -13,9 +14,10 @@ type LogoProps = {
     y: number;
   };
   id: string;
+  size: number;
 };
 
-const FloatingLogo = ({ Icon, initialPosition, speed }: LogoProps) => {
+const FloatingLogo = ({ Icon, initialPosition, speed, size }: LogoProps) => {
   const controls = useAnimation();
   const logoRef = useRef<HTMLDivElement | null>(null);
   const [velocity, setVelocity] = useState({ x: speed.x, y: speed.y });
@@ -60,12 +62,17 @@ const FloatingLogo = ({ Icon, initialPosition, speed }: LogoProps) => {
         position: "absolute",
         left: 0,
         top: 0,
+        width: size,
+        height: size,
       }}
       animate={controls}
       initial={initialPosition}
       transition={{ type: "tween", duration: 0.05 }}
     >
-      <Icon className="w-20 h-20 text-gray-400 opacity-20" />
+      <Icon
+        style={{ width: size, height: size }}
+        className="text-gray-400 opacity-20"
+      />
     </motion.div>
   );
 };
@@ -73,6 +80,8 @@ const FloatingLogo = ({ Icon, initialPosition, speed }: LogoProps) => {
 const FloatingLogos = () => {
   const [logos, setLogos] = useState<LogoProps[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { isMobile } = useScreenSize();
+  const iconSize = isMobile ? 40 : 80;
 
   useEffect(() => {
     const initializeLogos = () => {
@@ -82,13 +91,14 @@ const FloatingLogos = () => {
           id,
           Icon,
           initialPosition: {
-            x: Math.random() * (container.width - 40),
-            y: Math.random() * (container.height - 40),
+            x: Math.random() * (container.width - iconSize),
+            y: Math.random() * (container.height - iconSize),
           },
           speed: {
             x: (Math.random() - 0.5) * 4,
             y: (Math.random() - 0.5) * 4,
           },
+          size: iconSize,
         }));
         setLogos(newLogos);
       }
@@ -98,7 +108,7 @@ const FloatingLogos = () => {
     window.addEventListener("resize", initializeLogos);
 
     return () => window.removeEventListener("resize", initializeLogos);
-  }, []);
+  }, [iconSize]);
 
   return (
     <div
@@ -106,15 +116,7 @@ const FloatingLogos = () => {
       className="absolute pointer-events-none w-full h-full top-0 left-0 overflow-hidden -z-10"
     >
       {logos.length > 0 &&
-        logos.map((logo) => (
-          <FloatingLogo
-            key={logo.id}
-            id={logo.id}
-            Icon={logo.Icon}
-            initialPosition={logo.initialPosition}
-            speed={logo.speed}
-          />
-        ))}
+        logos.map((logo) => <FloatingLogo key={logo.id} {...logo} />)}
     </div>
   );
 };

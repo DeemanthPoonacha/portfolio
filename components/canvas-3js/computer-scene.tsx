@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
@@ -6,12 +6,13 @@ import gsap from "gsap";
 import * as THREE from "three";
 import CanvasLoader from "./loader";
 import Computer from "./computer";
-import CameraController from "./camera-controller";
+import CameraController, { LevaCameraController } from "./camera-controller";
 
 // Main Scene component
 const Scene = () => {
   return (
     <>
+      {/* <LevaCameraController /> */}
       <CameraController />
       <Computer />
       <Lighting />
@@ -75,18 +76,6 @@ const Lighting = () => {
 
 // Main canvas component
 const ComputersCanvas = () => {
-  // const [isMobile, setIsMobile] = useState(false);
-  // useEffect(() => {
-  //   const mediaQuery = window.matchMedia("(max-width: 500px)");
-  //   setIsMobile(mediaQuery.matches);
-  //   const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-  //     setIsMobile(event.matches);
-  //   };
-  //   mediaQuery.addEventListener("change", handleMediaQueryChange);
-  //   return () =>
-  //     mediaQuery.removeEventListener("change", handleMediaQueryChange);
-  // }, []);
-
   return (
     <div className="fixed right-0 w-full h-full top-0.5 z-0">
       <Canvas
