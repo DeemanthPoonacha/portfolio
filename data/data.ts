@@ -59,7 +59,7 @@ export const projects: Project[] = [
     description:
       "Fit Buddy is your go-to app for finding exercises by targeted muscle group. Built with ReactJS, and powered by Rapid API, it offers categorized exercises with brief benefits and YouTube video guides for each, helping you master every move with ease.",
     technologies: ["reactjs", "javascript", "rapid", "mui"],
-    link: "https://lambent-faun-fd75c3.netlify.app/",
+    link: "https://fit-buddy-prod.netlify.app/",
     image: "/projects/fit-buddy.webp",
   },
 ];
