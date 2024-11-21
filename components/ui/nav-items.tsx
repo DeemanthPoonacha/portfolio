@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useSection } from "@/lib/hooks/useSections";
-import { sections } from ".";
+import { sections } from "../sections";
 
 export const NavItems = ({ onClick = () => {} }) => {
   const { currentSection } = useSection();

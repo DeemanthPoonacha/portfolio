@@ -6,7 +6,7 @@ import { projects } from "@/data/data";
 import { useSection } from "@/lib/hooks/useSections";
 
 export default function Projects() {
-  const { setSelectedProject } = useSection();
+  const { setSelectedProject, selectedProject } = useSection();
   return (
     <div className="container mx-auto px-4">
       <h2 className="section-header">Featured Projects</h2>
@@ -20,7 +20,10 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="h-full"
           >
-            <ThreeDCard project={project} />
+            <ThreeDCard
+              project={project}
+              isSelected={selectedProject === project.id}
+            />
           </motion.div>
         ))}
       </div>

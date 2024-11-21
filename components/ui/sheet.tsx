@@ -3,7 +3,7 @@ import { TbMenu2 } from "react-icons/tb";
 import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "./logo";
 import { ThemeToggler } from "./theme-toggler";
-import { NavItems } from "../sections/nav-items";
+import { NavItems } from "./nav-items";
 
 export function MobileSheet() {
   const [isOpen, setIsOpen] = useState(false);

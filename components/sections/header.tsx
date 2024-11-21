@@ -2,7 +2,7 @@
 import { MobileSheet } from "@/components/ui/sheet";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { NavItems } from "./nav-items";
+import { NavItems } from "../ui/nav-items";
 import { Logo } from "../ui/logo";
 import { ThemeToggler } from "../ui/theme-toggler";
 

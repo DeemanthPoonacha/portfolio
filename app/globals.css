@@ -90,6 +90,9 @@ h2 {
 .section-header {
   @apply text-4xl font-bold mb-12 mx-auto gradient-text w-fit;
 }
+.hover-gradient-bg {
+  @apply hover:bg-gradient-to-r from-blue-600 to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400;
+}
 .gradient-bg {
   @apply bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400;
 }

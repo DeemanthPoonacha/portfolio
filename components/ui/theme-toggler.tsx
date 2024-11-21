@@ -10,7 +10,7 @@ export const ThemeToggler = () => {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 font-bold p-2"
     >
       {theme === "dark" ? (
         <TbSun className="h-5 w-5" />
