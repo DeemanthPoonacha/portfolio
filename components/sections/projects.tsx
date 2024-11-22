@@ -3,7 +3,7 @@
 import { ProjectDCard } from "@/components/ui/project-card";
 import { projects as originalProjects } from "@/data/data";
 import { useSection } from "@/lib/hooks/useSections";
-import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { CSSProperties } from "react";
 
 export default function Projects() {
@@ -89,7 +89,7 @@ export default function Projects() {
       default:
         return {
           ...baseStyles,
-          transform: "translateX(100%) scale(0.6)",
+          transform: "translateX(0%) scale(0.6)",
           opacity: 0,
           zIndex: -1,
         };
@@ -97,29 +97,29 @@ export default function Projects() {
   };
 
   return (
-    <div className="mt-[30vh] md:mt-[45vh] relative w-full mx-auto h-96 flex items-center justify-center">
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 z-10 p-2 rounded-full bg-white/50 hover:bg-white/75 transition-colors"
-        aria-label="Previous"
-      >
-        <BsArrowLeftCircle className="w-6 h-6" />
-      </button>
+    <div className="mt-[30svh] md:mt-[45svh] mb-8 relative w-full mx-auto h-96 flex items-center justify-center">
+      <div className="absolute w-screen max-w-7xl h-full overflow-hidden flex justify-center">
+        <button
+          onClick={handlePrev}
+          className="md:hidden absolute top-1/2 -translate-y-1/2 left-0 z-10 p-2 rounded-full bg-black/70  transition-colors"
+          aria-label="Previous"
+        >
+          <BsChevronLeft className="text-white w-6 h-6" />
+        </button>
 
-      <button
-        onClick={handleNext}
-        className="absolute right-4 z-10 p-2 rounded-full bg-white/50 hover:bg-white/75 transition-colors"
-        aria-label="Next"
-      >
-        <BsArrowRightCircle className="w-6 h-6" />
-      </button>
-      <div className="absolute w-screen h-full overflow-hidden flex justify-center">
+        <button
+          onClick={handleNext}
+          className="md:hidden absolute top-1/2 -translate-y-1/2 right-0 z-10 p-2 rounded-full bg-black/70  transition-colors"
+          aria-label="Next"
+        >
+          <BsChevronRight className="text-white w-6 h-6" />
+        </button>
         <div className="absolute w-full max-w-7xl flex justify-center">
           {projects.map((project, index) => (
             <div
               key={project.id + index}
               style={getItemStyles(index) as CSSProperties}
-              className="w-3/4 md:w-1/3"
+              className="w-5/6 md:w-1/3"
             >
               <ProjectDCard
                 onClick={() => setSelectedProjectIndex(index)}
