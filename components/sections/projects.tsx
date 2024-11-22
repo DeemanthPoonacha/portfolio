@@ -47,42 +47,41 @@ export default function Projects() {
     const baseStyles = {
       position: "absolute",
       transition: "all 500ms ease-out",
-      width: "33.333%",
     };
 
     switch (position) {
       case 0:
         return {
           ...baseStyles,
-          transform: "translateX(-80%) scale(0.6)",
+          transform: "translateX(-172%) scale(0.6)",
           opacity: 0,
           zIndex: 1,
         };
       case 1: // Left card
         return {
           ...baseStyles,
-          transform: "translateX(0%) scale(0.8)",
+          transform: "translateX(-96%) scale(0.8)",
           opacity: 0.9,
           zIndex: 1,
         };
       case 2: // Center card
         return {
           ...baseStyles,
-          transform: "translateX(100%) scale(1)",
+          transform: "translateX(0%) scale(1)",
           opacity: 1,
           zIndex: 2,
         };
       case 3: // Right card
         return {
           ...baseStyles,
-          transform: "translateX(200%) scale(0.8)",
+          transform: "translateX(96%) scale(0.8)",
           opacity: 0.9,
           zIndex: 1,
         };
       case 4:
         return {
           ...baseStyles,
-          transform: "translateX(280%) scale(0.6)",
+          transform: "translateX(172%) scale(0.6)",
           opacity: 0,
           zIndex: 1,
         };
@@ -96,8 +95,9 @@ export default function Projects() {
         };
     }
   };
+
   return (
-    <div className="mt-[30vh] md:mt-[45vh] relative w-full max-w-6xl mx-auto h-96 flex items-center justify-center overflow-hidden">
+    <div className="mt-[30vh] md:mt-[45vh] relative w-full mx-auto h-96 flex items-center justify-center">
       <button
         onClick={handlePrev}
         className="absolute left-4 z-10 p-2 rounded-full bg-white/50 hover:bg-white/75 transition-colors"
@@ -113,20 +113,22 @@ export default function Projects() {
       >
         <BsArrowRightCircle className="w-6 h-6" />
       </button>
-
-      <div className="relative w-full h-full">
-        {projects.map((project, index) => (
-          <div
-            key={project.id + index}
-            style={getItemStyles(index) as CSSProperties}
-          >
-            <ProjectDCard
-              onClick={() => setSelectedProjectIndex(index)}
-              project={project}
-              isSelected={selectedProjectIndex === index}
-            />
-          </div>
-        ))}
+      <div className="absolute w-screen h-full overflow-hidden flex justify-center">
+        <div className="absolute w-full max-w-7xl flex justify-center">
+          {projects.map((project, index) => (
+            <div
+              key={project.id + index}
+              style={getItemStyles(index) as CSSProperties}
+              className="w-3/4 md:w-1/3"
+            >
+              <ProjectDCard
+                onClick={() => setSelectedProjectIndex(index)}
+                project={project}
+                isSelected={selectedProjectIndex === index}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

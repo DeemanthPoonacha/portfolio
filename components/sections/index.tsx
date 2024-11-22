@@ -69,7 +69,7 @@ export const Section = ({ id, content, title }: SectionProps) => {
           {title}
         </motion.h2>
       )}
-      <div className="container mx-auto px-4">{content}</div>
+      <div className="container mx-auto">{content}</div>
     </section>
   );
 };
