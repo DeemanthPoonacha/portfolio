@@ -60,7 +60,7 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
     about: {
       position: { x: 0.6, y: 0.7, z: 4 },
       target: { x: 0.6, y: 0.5, z: -0.3 },
-      fov: 49,
+      fov: 37,
     },
     skills: {
       position: { x: 13.5, y: 5.4, z: 5.8 },
@@ -103,6 +103,33 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       position: { x: 5.1, y: 1, z: 2.8 },
       target: { x: 2, y: 0.6, z: 0.1 },
       fov: 8,
+    },
+  },
+  md: {
+    hero: {
+      position: { x: 18.3, y: 14.3, z: 18.9 },
+      target: { x: 1.5, y: 3.5, z: -0.6 },
+      fov: 15,
+    },
+    about: {
+      position: { x: 0.6, y: 0.7, z: 4 },
+      target: { x: 0.6, y: 0.5, z: -0.3 },
+      fov: 37,
+    },
+    skills: {
+      position: { x: 13.5, y: 5.4, z: 5.8 },
+      target: { x: -1.2, y: 0.1, z: -2.8 },
+      fov: 10,
+    },
+    projects: {
+      position: { x: 13.9, y: 6.1, z: 9.7 },
+      target: { x: 2.1, y: 1.1, z: 0 },
+      fov: 10,
+    },
+    contact: {
+      position: { x: 5.1, y: 1, z: 2.8 },
+      target: { x: 2, y: 0.6, z: 0.1 },
+      fov: 9,
     },
   },
 };

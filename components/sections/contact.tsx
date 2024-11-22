@@ -201,7 +201,7 @@ export default function Contact() {
       >
         <motion.div
           variants={ANIMATION_VARIANTS.item}
-          className="flex lg:gap-4 mt-16"
+          className="flex :gap-4 mt-16"
         >
           {SOCIAL_LINKS.map((link, index) => (
             <motion.a

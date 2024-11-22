@@ -25,24 +25,24 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.2 }}
-          className="flex flex-col items-center md:items-start"
+          className="flex flex-col items-center lg:items-start"
         >
           <motion.h1
             variants={fadeInUpVariants}
-            className=" md:text-left text-center text-6xl font-bold mb-4 gradient-text"
+            className=" lg:text-left text-center text-6xl font-bold mb-4 gradient-text"
           >
             Deemanth Poonacha
           </motion.h1>
           <motion.h2
             variants={fadeInUpVariants}
-            className="w-fit md:text-left text-center text-2xl font-medium text-gray-600 dark:text-gray-300"
+            className="w-fit lg:text-left text-center text-2xl font-medium text-gray-600 dark:text-gray-300"
           >
             Full Stack Developer
           </motion.h2>
 
           <motion.p
             variants={fadeInUpVariants}
-            className="w-fit md:text-left text-center text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed"
+            className="w-fit lg:text-left text-center text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed"
           >
             Passionate about creating robust and scalable web applications.
             <br />

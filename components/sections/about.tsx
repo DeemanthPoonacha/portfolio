@@ -66,8 +66,8 @@ export default function About() {
   };
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center gap-12">
-      <div className="md:w-1/3 flex justify-center">
+    <div className="relative flex flex-col lg:flex-row items-center gap-12">
+      <div className="lg:w-1/3 flex justify-center">
         <motion.div
           className="relative"
           initial="hidden"
@@ -96,7 +96,7 @@ export default function About() {
       </div>
 
       <motion.div
-        className="rounded-lg bg-card text-card-foreground shadow-sm md:w-2/3 hover-lift glass-card"
+        className="rounded-lg bg-card text-card-foreground shadow-sm lg:w-2/3 hover-lift glass-card"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         variants={cardVariants}
