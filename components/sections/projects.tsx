@@ -1,13 +1,15 @@
 "use client";
 
-import { ProjectDCard } from "@/components/ui/project-card";
+import { ProjectCard } from "@/components/ui/project-card";
 import { projects as originalProjects } from "@/data/data";
 import { useSection } from "@/lib/hooks/useSections";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { useSwipeable } from "react-swipeable";
 import { CSSProperties } from "react";
 
 export default function Projects() {
   const { setSelectedProjectIndex, selectedProjectIndex } = useSection();
+
   const extendToMinSize = (array: any[], minSize = 5) => {
     if (array.length === 0) return []; // Handle edge case for empty input array
 
@@ -16,6 +18,7 @@ export default function Projects() {
 
     return extendedArray;
   };
+
   const projects = extendToMinSize(originalProjects, 5);
 
   const handleNext = () => {
@@ -96,8 +99,18 @@ export default function Projects() {
     }
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventScrollOnSwipe: true, // Prevent browser scroll during swipe
+    trackMouse: true,
+  });
+
   return (
-    <div className="mt-[30svh] md:mt-[45svh] mb-8 relative w-full mx-auto h-96 flex items-center justify-center">
+    <div
+      {...swipeHandlers} // Add swipe handlers here
+      className="mt-[30svh] md:mt-[45svh] mb-8 relative w-full mx-auto h-96 flex items-center justify-center"
+    >
       <div className="absolute w-screen max-w-7xl h-full overflow-hidden flex justify-center">
         <button
           onClick={handlePrev}
@@ -121,7 +134,7 @@ export default function Projects() {
               style={getItemStyles(index) as CSSProperties}
               className="w-5/6 md:w-1/3"
             >
-              <ProjectDCard
+              <ProjectCard
                 onClick={() => setSelectedProjectIndex(index)}
                 project={project}
                 isSelected={selectedProjectIndex === index}

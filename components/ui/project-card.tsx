@@ -9,7 +9,7 @@ import { Project } from "@/lib/types";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
 
-export const ProjectDCard = ({
+export const ProjectCard = ({
   project,
   className,
   isSelected,
