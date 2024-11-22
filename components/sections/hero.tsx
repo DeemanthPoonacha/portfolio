@@ -20,7 +20,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className="container px-4 relative z-10 select-none">
+      <div className="my-auto select-none">
         <motion.div
           initial="hidden"
           animate="visible"

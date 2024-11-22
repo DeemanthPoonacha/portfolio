@@ -11,8 +11,7 @@ export default function Skills() {
   });
 
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="section-header">Skills</h2>
+    <>
       <div className="h-[60vh]"></div>
       {/* <motion.div
         ref={ref}
@@ -46,6 +45,6 @@ export default function Skills() {
           </motion.div>
         ))}
       </motion.div> */}
-    </div>
+    </>
   );
 }

@@ -80,16 +80,14 @@ html {
 }
 
 section {
-  @apply py-16 snap-always snap-center;
+  @apply py-16 snap-always snap-start;
 }
 
 h2 {
   @apply text-3xl font-bold mb-8 text-center;
 }
 
-.section-header {
-  @apply text-4xl font-bold mb-12 mx-auto gradient-text w-fit;
-}
+/* Gradients*/
 .hover-gradient-bg {
   @apply hover:bg-gradient-to-r from-blue-600 to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400;
 }
@@ -98,6 +96,19 @@ h2 {
 }
 .gradient-text {
   @apply bg-clip-text text-transparent gradient-bg w-fit;
+}
+
+.section-divider {
+  width: 100%;
+  height: 122px;
+  /* background: #0073ff0a; */
+  /* background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--primary)),
+    transparent
+  ); */
+  margin: 2rem 0;
 }
 
 .accent-bg {
@@ -119,17 +130,6 @@ h2 {
 .hover-lift:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.section-divider {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    hsl(var(--primary)),
-    transparent
-  );
-  margin: 2rem 0;
 }
 
 @keyframes float {

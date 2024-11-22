@@ -10,7 +10,7 @@ export const NavItems = ({ onClick = () => {} }) => {
     <>
       {sections
         .filter((_sec, index) => index)
-        .map(({ id, title }) => (
+        .map(({ id, nav_title }) => (
           <Link
             key={id}
             href={"#" + id}
@@ -28,7 +28,7 @@ export const NavItems = ({ onClick = () => {} }) => {
                   : "bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
               )}
             >
-              {title}
+              {nav_title}
             </span>
           </Link>
         ))}

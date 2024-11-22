@@ -120,15 +120,14 @@ export default function Contact() {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="section-header">Contact Me</h2>
+    <>
       <motion.div
         variants={ANIMATION_VARIANTS.container}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         transition={{ duration: 0.5 }}
       >
-        <Card className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white/20 backdrop-blur-3xl dark:bg-black/20">
+        <Card className="max-w-md w-full mx-auto rounded-md md:rounded-xl p-4 md:p-8 shadow-input bg-white/20 backdrop-blur-3xl dark:bg-black/20">
           <CardHeader>
             <CardTitle className="text-2xl text-primary">
               Get in Touch
@@ -222,6 +221,6 @@ export default function Contact() {
           ))}
         </motion.div>
       </motion.div>
-    </div>
+    </>
   );
 }
