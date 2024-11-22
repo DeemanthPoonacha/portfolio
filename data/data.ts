@@ -32,16 +32,7 @@ import {
   SiFramer,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
-import { TechnologyCard } from "../lib/types";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  link: string;
-  image: string;
-}
+import { Project, TechnologyCard } from "../lib/types";
 
 export const projects: Project[] = [
   {

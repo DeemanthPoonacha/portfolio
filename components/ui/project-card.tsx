@@ -5,22 +5,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { technologies } from "@/data/data";
+import { Project } from "@/lib/types";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
-import Button from "./outline-button";
 
-export const ThreeDCard = ({
+export const ProjectDCard = ({
   project,
   className,
   isSelected,
+  onClick,
 }: {
-  project: {
-    title: string;
-    description: string;
-    technologies: any[];
-    link: string;
-    image: string;
-  };
+  project: Project;
+  onClick: () => void;
   className?: string;
   isSelected?: boolean;
 }) => {
@@ -44,9 +40,10 @@ export const ThreeDCard = ({
 
   return (
     <motion.div
+      onClick={onClick}
       ref={cardRef}
       className={cn(
-        "w-full h-96 rounded-xl bg-gray-100 dark:bg-gray-800 overflow-hidden cursor-pointer relative group",
+        "w-full h-96 rounded-xl bg-gray-100 dark:bg-gray-800 overflow-hidden cursor-pointer relative group select-none",
         className
       )}
       style={{
@@ -62,7 +59,7 @@ export const ThreeDCard = ({
       onMouseLeave={handleMouseLeave}
     >
       <Image
-        src={project.image}
+        src={project.image || "/projects/project-placeholder.webp"}
         alt={project.title}
         layout="fill"
         objectFit="cover"

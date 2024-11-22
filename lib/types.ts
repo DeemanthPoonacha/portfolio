@@ -6,3 +6,11 @@ export interface TechnologyCard {
   name: string;
   color: string;
 }
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+  image?: string;
+}

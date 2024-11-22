@@ -7,10 +7,7 @@ export default function Home() {
     <div className="w-full">
       <ComputersCanvas />
       {sections.map((section) => (
-        <>
-          <Section key={section.id} {...section} />
-          <div className="section-divider"></div>
-        </>
+        <Section key={section.id} {...section} />
       ))}
     </div>
   );

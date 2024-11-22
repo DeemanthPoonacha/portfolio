@@ -1,9 +1,12 @@
 import { useSection } from "@/lib/hooks/useSections";
 import { useVideoTexture, useTexture } from "@react-three/drei";
 import RotatingSkills from "./rotating-skills";
+import { projects } from "@/data/data";
 
 export const Screen = () => {
-  const { currentSection, selectedProject } = useSection();
+  const { currentSection, selectedProjectIndex } = useSection();
+  const index = selectedProjectIndex % projects.length;
+  const selectedProjectId = projects[index]?.id;
   const textures: Record<string, string> = {
     skills: "/custom-textures/skills.webp",
     contact: "/custom-textures/black.png",
@@ -16,8 +19,8 @@ export const Screen = () => {
       "/desktop_pc/textures/Material.074_30_baseColor.png"
   );
   const video = useVideoTexture(
-    selectedProject
-      ? `/custom-textures/${selectedProject}.webm`
+    selectedProjectId
+      ? `/custom-textures/${selectedProjectId}.webm`
       : `/custom-textures/bloggy.webm`,
     {}
   );
