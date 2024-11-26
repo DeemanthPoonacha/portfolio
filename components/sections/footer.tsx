@@ -25,6 +25,26 @@ export default function Footer() {
             Twitter
           </a>
         </div>
+        <a
+          className="mx-1 text-primary"
+          href="https://sketchfab.com/3d-models/gaming-desktop-pc-d1d8282c9916438091f11aeb28787b66"
+        >
+          Gaming Desktop PC 3D Model
+        </a>
+        by
+        <a
+          className="mx-1 text-primary"
+          href="https://sketchfab.com/Yolala1232"
+        >
+          Yolala1232
+        </a>
+        licensed under
+        <a
+          className="mx-1 text-primary"
+          href="http://creativecommons.org/licenses/by/4.0/"
+        >
+          CC-BY-4.0
+        </a>
       </div>
     </footer>
   );
