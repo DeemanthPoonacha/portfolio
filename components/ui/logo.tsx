@@ -16,8 +16,8 @@ export const Logo = ({ onClick = () => {} }) => {
           theme === "dark" ? "/logos/logo_dark.png" : "/logos/logo_light.png"
         }
         alt="Logo"
-        width={264 * 0.25}
-        height={192 * 0.25}
+        width={256 * 0.25}
+        height={172 * 0.25}
       />
     </Link>
   );

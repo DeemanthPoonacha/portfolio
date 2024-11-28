@@ -81,7 +81,7 @@ const FloatingLogos = () => {
   const [logos, setLogos] = useState<LogoProps[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { isMobile } = useScreenSize();
-  const iconSize = isMobile ? 40 : 80;
+  const iconSize = !isMobile ? 80 : 40;
 
   useEffect(() => {
     const initializeLogos = () => {

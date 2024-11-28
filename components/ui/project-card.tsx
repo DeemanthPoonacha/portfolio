@@ -61,9 +61,9 @@ export const ProjectCard = ({
       <Image
         src={project.image || "/projects/project-placeholder.webp"}
         alt={project.title}
-        layout="fill"
-        objectFit="cover"
-        className="group-hover:scale-110 transition-transform duration-300"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="group-hover:scale-110 transition-transform duration-300 object-cover"
       />
       <div className="absolute flex z-10 p-4 w-full justify-between items-center">
         <span
