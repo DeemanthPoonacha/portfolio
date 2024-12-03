@@ -82,6 +82,7 @@ export const ProjectCard = ({
           </span>
         </span>
         <Link
+          title="View live site"
           target="_blank"
           href={project.link}
           className="z-50 p-2 rounded-md text-2xl font-bold text-zinc-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover-gradient-bg"
