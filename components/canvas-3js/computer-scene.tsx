@@ -1,3 +1,4 @@
+"use client";
 import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";

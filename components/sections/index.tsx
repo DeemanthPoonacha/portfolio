@@ -1,3 +1,4 @@
+"use client";
 import { useSection } from "@/lib/hooks/useSections";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -73,3 +74,13 @@ export const Section = ({ id, content, title }: SectionProps) => {
     </section>
   );
 };
+
+const Sections = () => (
+  <>
+    {sections.map((section) => (
+      <Section key={section.id} {...section} />
+    ))}
+  </>
+);
+
+export default Sections;
