@@ -119,6 +119,53 @@ export default function Contact() {
     }
   };
 
+  const contactForm = (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        value={formState.name}
+        onChange={handleInputChange}
+        required
+        disabled={isLoading}
+        className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
+      />
+      <Input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        value={formState.email}
+        onChange={handleInputChange}
+        required
+        disabled={isLoading}
+        className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
+      />
+      <Textarea
+        name="message"
+        placeholder="Your Message"
+        value={formState.message}
+        onChange={handleInputChange}
+        required
+        disabled={isLoading}
+        className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
+      />
+      <Button type="submit" className="w-full" disabled={isLoading}>
+        {isLoading ? (
+          <>
+            {/* <Loader2 className="mr-2 h-4 w-4 animate-spin" /> */}
+            Sending...
+          </>
+        ) : (
+          <>
+            Send Message
+            <BsSendFill className="ml-2" />
+          </>
+        )}
+      </Button>
+    </form>
+  );
+
   return (
     <>
       <motion.div
@@ -126,8 +173,9 @@ export default function Contact() {
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         transition={{ duration: 0.5 }}
+        className="max-w-md w-full mx-auto rounded-md md:rounded-xl shadow-input bg-white/20 backdrop-blur-sm dark:bg-black/20"
       >
-        <Card className="max-w-md w-full mx-auto rounded-md md:rounded-xl p-4 md:p-8 shadow-input bg-white/20 backdrop-blur-3xl dark:bg-black/20">
+        <Card className="bg-transparent p-4 md:p-8">
           <CardHeader>
             <CardTitle className="text-2xl text-primary">
               Get in Touch
@@ -145,50 +193,7 @@ export default function Contact() {
                 {notification.message}
               </div>
             )}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formState.name}
-                onChange={handleInputChange}
-                required
-                disabled={isLoading}
-                className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
-              />
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formState.email}
-                onChange={handleInputChange}
-                required
-                disabled={isLoading}
-                className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
-              />
-              <Textarea
-                name="message"
-                placeholder="Your Message"
-                value={formState.message}
-                onChange={handleInputChange}
-                required
-                disabled={isLoading}
-                className="border-gray-300 focus:border-primary dark:border-gray-600 dark:focus:border-primary"
-              />
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    {/* <Loader2 className="mr-2 h-4 w-4 animate-spin" /> */}
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message
-                    <BsSendFill className="ml-2" />
-                  </>
-                )}
-              </Button>
-            </form>
+            {contactForm}
           </CardContent>
         </Card>
       </motion.div>
@@ -199,10 +204,7 @@ export default function Contact() {
         animate={isVisible ? "visible" : "hidden"}
         className="flex justify-center space-y-8"
       >
-        <motion.div
-          variants={ANIMATION_VARIANTS.item}
-          className="flex mt-16"
-        >
+        <motion.div variants={ANIMATION_VARIANTS.item} className="flex mt-16">
           {SOCIAL_LINKS.map((link, index) => (
             <motion.a
               key={index}
