@@ -49,7 +49,7 @@ export default function Hero() {
             Experienced in both front-end and back-end technologies.
           </motion.p>
 
-          <Link href="#contact" className="rounded-full">
+          <Link href="#contact" className="rounded-full pointer-events-auto">
             <Button className="rounded-full" spanClassName="rounded-full">
               Contact Me
             </Button>

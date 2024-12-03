@@ -173,7 +173,7 @@ export default function Contact() {
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full mx-auto rounded-md md:rounded-xl shadow-input bg-white/20 backdrop-blur-sm dark:bg-black/20"
+        className="max-w-md w-full mx-auto rounded-md md:rounded-xl shadow-input bg-white/20 backdrop-blur-sm dark:bg-black/20 pointer-events-auto"
       >
         <Card className="bg-transparent p-4 md:p-8">
           <CardHeader>
@@ -202,7 +202,7 @@ export default function Contact() {
         variants={ANIMATION_VARIANTS.container}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
-        className="flex justify-center space-y-8"
+        className="flex justify-center space-y-8 pointer-events-auto"
       >
         <motion.div variants={ANIMATION_VARIANTS.item} className="flex mt-16">
           {SOCIAL_LINKS.map((link, index) => (

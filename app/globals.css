@@ -73,7 +73,7 @@
 }
 
 html {
-  @apply scroll-smooth snap-y snap-mandatory overflow-y-scroll;
+  @apply scroll-smooth snap-y snap-mandatory overflow-y-scroll select-none;
 }
 .container {
   @apply px-4 mx-auto max-w-7xl;

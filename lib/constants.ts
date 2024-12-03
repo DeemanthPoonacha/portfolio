@@ -43,10 +43,18 @@ export const computerPositions: Record<string, { big_768: Pose }> = {
   },
 };
 
-type CameraPose = {
+export type OrbitalAngles = {
+  minAzimuthAngle: number;
+  maxAzimuthAngle: number;
+  minPolarAngle: number;
+  maxPolarAngle: number;
+};
+
+export type CameraPose = {
   position: Vector3Like;
   target: Vector3Like;
   fov: number;
+  angles: OrbitalAngles;
 };
 
 // Define camera positions for each section
@@ -56,26 +64,56 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       position: { x: 15.2, y: 3, z: 5 },
       target: { x: 2, y: 0.6, z: 0 },
       fov: 25,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     about: {
       position: { x: 0.6, y: 0.7, z: 4 },
       target: { x: 0.6, y: 0.5, z: -0.3 },
       fov: 37,
+      angles: {
+        minAzimuthAngle: -5,
+        maxAzimuthAngle: 15,
+        minPolarAngle: 80,
+        maxPolarAngle: 90,
+      },
     },
     skills: {
       position: { x: 13.5, y: 5.4, z: 5.8 },
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 10,
+      angles: {
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
+        minPolarAngle: 72,
+        maxPolarAngle: 72,
+      },
     },
     projects: {
       position: { x: 13.9, y: 6.1, z: 9.7 },
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     contact: {
       position: { x: 5.1, y: 1, z: 2.8 },
       target: { x: 2, y: 0.6, z: 0.1 },
       fov: 9,
+      angles: {
+        minAzimuthAngle: 49,
+        maxAzimuthAngle: 49,
+        minPolarAngle: 84,
+        maxPolarAngle: 84,
+      },
     },
   },
   sm: {
@@ -83,26 +121,56 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       position: { x: 18.3, y: 10.3, z: 18.9 },
       target: { x: 1.5, y: 5, z: -0.6 },
       fov: 25,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     about: {
       position: { x: 5.4, y: 0.7, z: 4.3 },
       target: { x: 1, y: -0.1, z: -0.35 },
       fov: 37,
+      angles: {
+        minAzimuthAngle: -5,
+        maxAzimuthAngle: 15,
+        minPolarAngle: 80,
+        maxPolarAngle: 90,
+      },
     },
     skills: {
       position: { x: 13.5, y: 5.4, z: 5.8 },
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 19,
+      angles: {
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
+        minPolarAngle: 72,
+        maxPolarAngle: 72,
+      },
     },
     projects: {
       position: { x: 13.9, y: 6.1, z: 9.7 },
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     contact: {
       position: { x: 5.1, y: 1, z: 2.8 },
       target: { x: 2, y: 0.6, z: 0.1 },
       fov: 8,
+      angles: {
+        minAzimuthAngle: 49,
+        maxAzimuthAngle: 49,
+        minPolarAngle: 84,
+        maxPolarAngle: 84,
+      },
     },
   },
   md: {
@@ -110,26 +178,56 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       position: { x: 18.3, y: 14.3, z: 18.9 },
       target: { x: 1.5, y: 3.5, z: -0.6 },
       fov: 15,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     about: {
       position: { x: 0.6, y: 0.7, z: 4 },
       target: { x: 0.6, y: 0.5, z: -0.3 },
       fov: 37,
+      angles: {
+        minAzimuthAngle: -5,
+        maxAzimuthAngle: 15,
+        minPolarAngle: 80,
+        maxPolarAngle: 90,
+      },
     },
     skills: {
       position: { x: 13.5, y: 5.4, z: 5.8 },
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 10,
+      angles: {
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
+        minPolarAngle: 72,
+        maxPolarAngle: 72,
+      },
     },
     projects: {
       position: { x: 13.9, y: 6.1, z: 9.7 },
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
+      angles: {
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
+        minPolarAngle: 72,
+        maxPolarAngle: 90,
+      },
     },
     contact: {
       position: { x: 5.1, y: 1, z: 2.8 },
       target: { x: 2, y: 0.6, z: 0.1 },
       fov: 9,
+      angles: {
+        minAzimuthAngle: 49,
+        maxAzimuthAngle: 49,
+        minPolarAngle: 84,
+        maxPolarAngle: 84,
+      },
     },
   },
 };

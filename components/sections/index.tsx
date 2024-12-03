@@ -57,7 +57,7 @@ export const Section = ({ id, content, title }: SectionProps) => {
   return (
     <section
       id={id}
-      className="flex flex-col justify-center items-center h-screen relative w-full mb-96 md:mb-[15%]"
+      className="flex flex-col justify-center items-center h-screen relative w-full mb-96 md:mb-[15%] pointer-events-none"
       ref={ref}
     >
       {!title ? null : (

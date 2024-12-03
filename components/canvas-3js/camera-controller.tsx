@@ -3,11 +3,12 @@ import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useSection } from "@/lib/hooks/useSections";
 import gsap from "gsap";
-import { cameraPositions } from "@/lib/constants";
+import { CameraPose, cameraPositions, OrbitalAngles } from "@/lib/constants";
 import { button, folder, useControls } from "leva";
 import { PerspectiveCamera } from "three";
 import { OrbitControls as OrbitControlsType } from "three-stdlib";
 import useScreenSize from "@/lib/hooks/useScreenSize";
+import { degToRad, radToDeg } from "three/src/math/MathUtils.js";
 
 const CameraController = () => {
   const { camera } = useThree();
@@ -16,9 +17,7 @@ const CameraController = () => {
 
   // Function to animate camera movement
   const animateCamera = useCallback(
-    (
-      targetConfig: (typeof cameraPositions)["sm"][keyof (typeof cameraPositions)["sm"]]
-    ) => {
+    (targetConfig: CameraPose) => {
       if (!camera || !controlsRef.current) return;
 
       const duration = 1.5;
@@ -60,6 +59,14 @@ const CameraController = () => {
           controlsRef.current?.update();
         },
       });
+
+      for (const key in targetConfig.angles) {
+        gsap.to(controlsRef.current, {
+          [key]: degToRad(targetConfig.angles[key as keyof OrbitalAngles]),
+          duration,
+          ease,
+        });
+      }
     },
     [camera]
   );
@@ -67,7 +74,9 @@ const CameraController = () => {
   const { screenSize } = useScreenSize();
   // React to section changes
   useEffect(() => {
-    const targetConfig = cameraPositions[screenSize][currentSection];
+    const targetConfig = {
+      ...cameraPositions[screenSize][currentSection],
+    };
     if (targetConfig) {
       animateCamera(targetConfig);
     }
@@ -78,9 +87,13 @@ const CameraController = () => {
       ref={controlsRef}
       enableZoom={false}
       enablePan={false}
+      // dampingFactor={0.81}
       // enableRotate={false}
-      maxPolarAngle={Math.PI / 2}
-      minPolarAngle={Math.PI / 4}
+      // enableDamping={false}
+      // minAzimuthAngle={degToRad(anglesLimit[currentSection].minAzimuthAngle)}
+      // maxAzimuthAngle={degToRad(anglesLimit[currentSection].maxAzimuthAngle)}
+      // minPolarAngle={degToRad(anglesLimit[currentSection].minPolarAngle)}
+      // maxPolarAngle={degToRad(anglesLimit[currentSection].maxPolarAngle)}
     />
   );
 };
