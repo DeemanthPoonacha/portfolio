@@ -87,10 +87,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 10,
       angles: {
-        minAzimuthAngle: 45,
-        maxAzimuthAngle: 55,
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
         minPolarAngle: 72,
-        maxPolarAngle: 72,
+        maxPolarAngle: 90,
       },
     },
     projects: {
@@ -98,10 +98,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
       angles: {
-        minAzimuthAngle: 10,
-        maxAzimuthAngle: 80,
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
         minPolarAngle: 72,
-        maxPolarAngle: 90,
+        maxPolarAngle: 72,
       },
     },
     contact: {
@@ -144,10 +144,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 19,
       angles: {
-        minAzimuthAngle: 45,
-        maxAzimuthAngle: 55,
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
         minPolarAngle: 72,
-        maxPolarAngle: 72,
+        maxPolarAngle: 90,
       },
     },
     projects: {
@@ -155,10 +155,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
       angles: {
-        minAzimuthAngle: 10,
-        maxAzimuthAngle: 80,
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
         minPolarAngle: 72,
-        maxPolarAngle: 90,
+        maxPolarAngle: 72,
       },
     },
     contact: {
@@ -201,10 +201,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: -1.2, y: 0.1, z: -2.8 },
       fov: 10,
       angles: {
-        minAzimuthAngle: 45,
-        maxAzimuthAngle: 55,
+        minAzimuthAngle: 10,
+        maxAzimuthAngle: 80,
         minPolarAngle: 72,
-        maxPolarAngle: 72,
+        maxPolarAngle: 90,
       },
     },
     projects: {
@@ -212,10 +212,10 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: 2.1, y: 1.1, z: 0 },
       fov: 10,
       angles: {
-        minAzimuthAngle: 10,
-        maxAzimuthAngle: 80,
+        minAzimuthAngle: 45,
+        maxAzimuthAngle: 55,
         minPolarAngle: 72,
-        maxPolarAngle: 90,
+        maxPolarAngle: 72,
       },
     },
     contact: {
