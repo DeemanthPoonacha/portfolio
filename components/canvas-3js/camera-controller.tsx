@@ -21,7 +21,7 @@ const CameraController = () => {
       if (!camera || !controlsRef.current) return;
 
       const duration = 1.5;
-      const ease = "power3.out";
+      const ease = "power4.out";
 
       // Animate position
       gsap.to(camera.position, {
@@ -58,6 +58,9 @@ const CameraController = () => {
         onUpdate: () => {
           controlsRef.current?.update();
         },
+        onComplete: () => {
+          console.log(radToDeg(controlsRef.current?.getPolarAngle()));
+        },
       });
 
       for (const key in targetConfig.angles) {
@@ -87,6 +90,7 @@ const CameraController = () => {
       ref={controlsRef}
       enableZoom={false}
       enablePan={false}
+      // enableRotate={false}
       // dampingFactor={0.81}
       // enableRotate={false}
       // enableDamping={false}

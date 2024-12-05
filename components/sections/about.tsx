@@ -38,7 +38,7 @@ export default function About() {
       transition: {
         type: "spring",
         stiffness: 100,
-        duration: 0.8,
+        duration: 0.4,
         delay: 1.3,
       },
     },
@@ -67,7 +67,7 @@ export default function About() {
 
   return (
     <div className="relative flex flex-col lg:flex-row items-center gap-12">
-      <div className="lg:w-1/3 flex justify-center">
+      <div className="lg:w-1/3 flex justify-center pointer-events-auto">
         <motion.div
           className="relative"
           initial="hidden"
@@ -96,7 +96,7 @@ export default function About() {
       </div>
 
       <motion.div
-        className="rounded-lg bg-card text-card-foreground shadow-sm lg:w-2/3 hover-lift glass-card"
+        className="rounded-lg bg-card text-card-foreground shadow-sm lg:w-2/3 hover-lift glass-card pointer-events-auto"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         variants={cardVariants}

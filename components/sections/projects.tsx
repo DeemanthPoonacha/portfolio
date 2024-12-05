@@ -109,7 +109,7 @@ export default function Projects() {
   return (
     <div
       {...swipeHandlers} // Add swipe handlers here
-      className="mt-[30svh] md:mt-[35svh] 2xl:mt-[45svh] mb-8 relative w-full mx-auto h-96 flex items-center justify-center pointer-events-auto"
+      className="mt-[30svh] md:mt-[35svh] 2xl:mt-[40svh] mb-8 relative w-full mx-auto h-96 flex items-center justify-center pointer-events-auto"
     >
       <div className="absolute w-screen max-w-7xl h-full overflow-hidden flex justify-center">
         <button

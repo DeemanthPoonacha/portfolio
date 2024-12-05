@@ -133,8 +133,8 @@ export const cameraPositions: Record<string, Record<string, CameraPose>> = {
       target: { x: 1, y: -0.1, z: -0.35 },
       fov: 37,
       angles: {
-        minAzimuthAngle: -5,
-        maxAzimuthAngle: 15,
+        minAzimuthAngle: 25,
+        maxAzimuthAngle: 60,
         minPolarAngle: 80,
         maxPolarAngle: 90,
       },

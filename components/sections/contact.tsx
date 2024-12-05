@@ -167,7 +167,7 @@ export default function Contact() {
   );
 
   return (
-    <>
+    <div className="pointer-events-auto">
       <motion.div
         variants={ANIMATION_VARIANTS.container}
         initial="hidden"
@@ -223,6 +223,6 @@ export default function Contact() {
           ))}
         </motion.div>
       </motion.div>
-    </>
+    </div>
   );
 }

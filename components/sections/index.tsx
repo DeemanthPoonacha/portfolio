@@ -65,7 +65,7 @@ export const Section = ({ id, content, title }: SectionProps) => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={headerVariants}
-          className="text-4xl font-bold mt-32 md:mt-0 mb-12 mx-auto gradient-text"
+          className="text-4xl font-bold mt-32 md:mt-0 mb-12 mx-auto gradient-text pointer-events-auto"
         >
           {title}
         </motion.h2>

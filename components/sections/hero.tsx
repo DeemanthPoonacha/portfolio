@@ -25,7 +25,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.2 }}
-          className="flex flex-col items-center lg:items-start"
+          className="flex flex-col items-center lg:items-start w-fit pointer-events-auto"
         >
           <motion.h1
             variants={fadeInUpVariants}
@@ -49,7 +49,7 @@ export default function Hero() {
             Experienced in both front-end and back-end technologies.
           </motion.p>
 
-          <Link href="#contact" className="rounded-full pointer-events-auto">
+          <Link href="#contact" className="rounded-full">
             <Button className="rounded-full" spanClassName="rounded-full">
               Contact Me
             </Button>
