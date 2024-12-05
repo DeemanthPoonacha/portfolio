@@ -3,10 +3,12 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useSection } from "@/lib/hooks/useSections";
+import useScreenSize from "@/lib/hooks/useScreenSize";
 
 export default function About() {
   const { currentSection } = useSection();
   const isVisible = currentSection === "about";
+  const { screenSize } = useScreenSize();
 
   const imageVariants = {
     hidden: {
@@ -27,12 +29,13 @@ export default function About() {
 
   const cardVariants = {
     hidden: {
-      x: -600,
+      ...(screenSize === "lg" ? { x: -600 } : { y: -300 }),
       opacity: 0,
       scale: 0,
     },
     visible: {
       x: 0,
+      y: 0,
       opacity: 1,
       scale: 1,
       transition: {
