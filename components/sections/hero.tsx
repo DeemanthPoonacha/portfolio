@@ -25,7 +25,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.2 }}
-          className="flex flex-col items-center lg:items-start w-fit pointer-events-auto"
+          className="flex flex-col items-center lg:items-start w-fit mx-auto lg:mx-0 pointer-events-auto"
         >
           <motion.h1
             variants={fadeInUpVariants}

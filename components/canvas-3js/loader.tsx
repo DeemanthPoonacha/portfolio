@@ -16,7 +16,7 @@ const CanvasLoader = () => {
     >
       <div className="w-40 flex justify-between mb-1 p-0.5 text-base font-medium text-zinc-600 dark:text-zinc-300">
         <span>Loading</span>
-        <span>{progress}%</span>
+        <span>{progress.toFixed(0)}%</span>
       </div>
       <div className="w-40 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
         <div

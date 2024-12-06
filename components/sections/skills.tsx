@@ -12,7 +12,7 @@ export default function Skills() {
 
   return (
     <>
-      <div className="mt-[45vh] h-[15vh] lg:h-0 lg:mt-[60vh] pointer-events-auto"></div>
+      <div className="mt-[60vh] pointer-events-auto"></div>
       {/* <motion.div
         ref={ref}
         initial={{ opacity: 0 }}
